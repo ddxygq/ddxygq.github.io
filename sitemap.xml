@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ikeguang.com/404.html</loc>
+    
+    <lastmod>2019-11-16T13:41:18.729Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
     
     <lastmod>2019-11-05T14:20:11.632Z</lastmod>
