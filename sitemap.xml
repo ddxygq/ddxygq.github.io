@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ikeguang.com/friends/index.html</loc>
+    
+    <lastmod>2019-11-30T06:51:27.041Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ikeguang.com/404.html</loc>
     
     <lastmod>2019-11-16T13:55:35.122Z</lastmod>
@@ -117,13 +124,6 @@
     <loc>http://www.ikeguang.com/2019/10/11/mysql-id-2-max/</loc>
     
     <lastmod>2019-10-11T14:32:47.352Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/friends/index.html</loc>
-    
-    <lastmod>2019-09-28T11:45:58.360Z</lastmod>
     
   </url>
   
