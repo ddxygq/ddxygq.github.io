@@ -211,6 +211,102 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-statistic-hive-daily-week-month" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/statistic-hive-daily-week-month/">基于历史数据的用户访问次数，每天新老用户，日活，周活，月活的hive计算</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/statistic-hive-daily-week-month/" class="archive-article-date">
+  	<time datetime="2018-08-03T09:34:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近有一个需求，统计每天的新老用户，日活，周活，月活。<br>我们每天的增量数据会加入到hive历史数据表中，包含用户访问网站的一些信息，字段有很多，包括用户唯一标识guid。<br>当然了日活，周活，月活就是一个count(distinct(guid))语句，非常常用的sql。</p>
+<p><strong>但是这里的问题是：</strong></p>
+<blockquote>
+<p>A：每天的新老用户应该怎么统计呢？<br>B：这还不简单，判断用户guid是否存在与历史库guid中嘛？<br>A：历史数据几十个T，大概一百亿行，你要每天将当日数据（2~3亿行）与历史数据几亿行进行join判断？<br>B：额，这个，这个，好像不行哦！</p>
+</blockquote>
+<p>是的，历史数据里面是用户网站访问行为，同一个用户在同一天，不同的天都有可能出现，guid在历史表中会有多次。如果直接join，性能很差，实际上是做了很多不必要的工作。</p>
+          
+        
+          <a class="article-more-a" href="/2018/08/03/statistic-hive-daily-week-month/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/statistic-hive-daily-week-month/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!--
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container',
+        blogId: '15845-1569417464692-996',
+        name: '数据分析挖掘与算法',
+        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
+        keyword: '验证码',
+    });
+</script>
+-->
+  
     <article id="post-sparkStreaming-redis-mysql" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -361,6 +457,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -372,6 +470,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-aliyun-mirror" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -449,6 +548,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -460,6 +561,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-line-gredient" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -547,6 +649,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -558,6 +662,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-line-square" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -645,6 +750,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -656,6 +763,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-markov" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -734,6 +842,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -745,6 +855,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-machine-sjwl-2" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -789,11 +900,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
         		</li>
       		
 		</ul>
@@ -831,6 +942,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -842,6 +955,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
     <article id="post-machine-sjwl-1" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
@@ -886,11 +1000,11 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
         		</li>
       		
 		</ul>
@@ -928,6 +1042,8 @@ var _hmt = _hmt || [];
 
 
 
+
+<!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
     const btw = new BTWPlugin();
@@ -939,6 +1055,7 @@ var _hmt = _hmt || [];
         keyword: '验证码',
     });
 </script>
+-->
   
   
     <nav id="page-nav">
@@ -1093,11 +1210,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">seo</a>
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流量</a>
+                <a href="javascript:void(0)" class="js-tag color1">大数据安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,19 +1230,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">大数据安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hive</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hbase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">seo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流量</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1137,11 +1254,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">matlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1157,7 +1278,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">监控</a>
+                <a href="javascript:void(0)" class="js-tag color1">spark</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,10 +1287,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">折腾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">spark</a>
               </li>
              
               <li class="article-tag-list-item">
