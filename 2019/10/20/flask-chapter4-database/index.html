@@ -9,7 +9,7 @@
   <title>第四章-Python3中Web开发框架flask操作数据库 | 柯广的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="代码地址：https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter4-database/app sqlalchemy 数据库操作本文翻译自 The Flask Mega-Tutorial Part IV: Database 在Flask Mega-Tutorial系列的第四部分，我将告诉你如何使用数据库">
-<meta name="keywords" content="柯广">
+<meta name="keywords" content="python,flask">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第四章-Python3中Web开发框架flask操作数据库">
 <meta property="og:url" content="http://www.ikeguang.com/2019/10/20/flask-chapter4-database/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://camo.githubusercontent.com/f2105717322eb1d2126fc73218283d7cc571d7e6/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f343936313532382d336437663236643630646433343061642e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
 <meta property="og:image" content="https://camo.githubusercontent.com/45034bfacb8f0443c36e619e7fd5f6c6ed10c902/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f343936313532382d373035376563323530663430626564352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430">
 <meta property="og:image" content="http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg">
-<meta property="og:updated_time" content="2019-10-20T13:40:37.830Z">
+<meta property="og:updated_time" content="2019-12-16T14:38:33.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第四章-Python3中Web开发框架flask操作数据库">
 <meta name="twitter:description" content="代码地址：https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter4-database/app sqlalchemy 数据库操作本文翻译自 The Flask Mega-Tutorial Part IV: Database 在Flask Mega-Tutorial系列的第四部分，我将告诉你如何使用数据库">
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/share">资源分享</a></li>
 	        
-				<li><a href="/jiaocheng">易学教程</a></li>
+				<li><a href="/categories/Python博文">易学教程</a></li>
 	        
 				<li><a href="/friends">友情链接</a></li>
 	        
@@ -197,7 +197,7 @@ var _hmt = _hmt || [];
 		        
 					<li style="width: 20%"><a href="/share">资源分享</a></li>
 		        
-					<li style="width: 20%"><a href="/jiaocheng">易学教程</a></li>
+					<li style="width: 20%"><a href="/categories/Python博文">易学教程</a></li>
 		        
 					<li style="width: 20%"><a href="/friends">友情链接</a></li>
 		        
@@ -356,7 +356,33 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -629,11 +655,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">青春</a>
+                <a href="javascript:void(0)" class="js-tag color3">赚钱</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,7 +667,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">赚钱</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">青春</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -689,7 +723,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,19 +731,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color2">matlab</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">matlab</a>
               </li>
              
               <li class="article-tag-list-item">

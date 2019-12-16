@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2019/10/22/flask-chapter16-search/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/22/flask-chapter15-optimize/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/21/flask-chapter13-language/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter12-datetime/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter11-beauty/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter10-mail/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter9-paging/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter8-fans/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter6-homepage/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter5-login/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter4-database/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/07/flask-chapter3-form/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/12/05/chapter02-hive-wordcount/</loc>
     <lastmod>2019-12-15</lastmod>
   </url>  <url>
@@ -10,46 +49,10 @@
     <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
     <lastmod>2019-11-05</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/21/flask-chapter13-language/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/22/flask-chapter16-search/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/22/flask-chapter15-optimize/</loc>
-    <lastmod>2019-10-22</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter12-datetime/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter8-fans/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter7-errorhandle/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter6-homepage/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter5-login/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter4-database/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/07/flask-chapter3-form/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/09/28/python-decorator/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter10-mail/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter11-beauty/</loc>
-    <lastmod>2019-10-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter9-paging/</loc>
     <lastmod>2019-10-20</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/11/mysql-id-2-max/</loc>
