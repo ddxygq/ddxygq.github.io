@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter10-mail/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/22/flask-chapter16-search/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
@@ -14,9 +17,6 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter11-beauty/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter10-mail/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter9-paging/</loc>
