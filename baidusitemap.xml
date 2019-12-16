@@ -22,6 +22,9 @@
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter9-paging/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter4-database/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter8-fans/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
@@ -29,9 +32,6 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter5-login/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter4-database/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/07/flask-chapter3-form/</loc>
