@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2019/12/17/spring-issue/</loc>
+    <lastmod>2019-12-17</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter7-errorhandle/</loc>
+    <lastmod>2019-12-17</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/20/flask-chapter10-mail/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
@@ -48,9 +54,6 @@
   </url>  <url>
     <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
     <lastmod>2019-11-05</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/10/20/flask-chapter7-errorhandle/</loc>
-    <lastmod>2019-10-20</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/09/28/python-decorator/</loc>
     <lastmod>2019-10-20</lastmod>
