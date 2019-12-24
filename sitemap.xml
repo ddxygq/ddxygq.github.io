@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
+    
+    <lastmod>2019-12-24T16:11:17.215Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
+    
+    <lastmod>2019-12-20T14:05:37.071Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/share/index.html</loc>
+    
+    <lastmod>2019-12-20T13:53:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
     
     <lastmod>2019-12-17T15:35:27.518Z</lastmod>
@@ -163,13 +184,6 @@
   </url>
   
   <url>
-    <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
-    
-    <lastmod>2019-12-16T14:29:50.708Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.ikeguang.com/2019/12/05/chapter02-hive-wordcount/</loc>
     
     <lastmod>2019-12-15T13:37:43.772Z</lastmod>
@@ -222,13 +236,6 @@
     <loc>http://www.ikeguang.com/2018/11/04/hive-knowledge/</loc>
     
     <lastmod>2019-09-11T16:03:19.526Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/share/index.html</loc>
-    
-    <lastmod>2019-09-11T15:50:13.004Z</lastmod>
     
   </url>
   

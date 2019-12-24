@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.ikeguang.com">
-  <title>柯广的博客</title>
+  <title>sqoop用法 | 柯广的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="柯广的博客">
-<meta name="keywords" content="柯广">
-<meta property="og:type" content="website">
-<meta property="og:title" content="柯广的博客">
-<meta property="og:url" content="http://www.ikeguang.com/page/6/index.html">
+  <meta name="description" content="sqoop稳定版本:sqoop-1.4.6。 一. Mysql 数据导入到 Hive1). 将mysql的people_access_log表导入到hive表web.people_access_log，并且hive中的表不存在。mysql中表people_access_log数据为：1234561,15110101010,1577003281739,&apos;112.168.1.2&apos;,&apos;https://w">
+<meta name="keywords" content="bigdata">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqoop用法">
+<meta property="og:url" content="http://www.ikeguang.com/2019/12/20/sqoop-usage/index.html">
 <meta property="og:site_name" content="柯广的博客">
-<meta property="og:description" content="柯广的博客">
+<meta property="og:description" content="sqoop稳定版本:sqoop-1.4.6。 一. Mysql 数据导入到 Hive1). 将mysql的people_access_log表导入到hive表web.people_access_log，并且hive中的表不存在。mysql中表people_access_log数据为：1234561,15110101010,1577003281739,&apos;112.168.1.2&apos;,&apos;https://w">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-24T16:11:17.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="柯广的博客">
-<meta name="twitter:description" content="柯广的博客">
+<meta name="twitter:title" content="sqoop用法">
+<meta name="twitter:description" content="sqoop稳定版本:sqoop-1.4.6。 一. Mysql 数据导入到 Hive1). 将mysql的people_access_log表导入到hive表web.people_access_log，并且hive中的表不存在。mysql中表people_access_log数据为：1234561,15110101010,1577003281739,&apos;112.168.1.2&apos;,&apos;https://w">
   
   
     <link rel="icon" href="/image/site-config-img/favicon.ico">
@@ -209,22 +210,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-pyhive-mysql" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+            <article id="post-sqoop-usage" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/21/pyhive-mysql/">Python查询hive结果保存到mysql的代码优化历程</a>
+    <h1 class="article-title" itemprop="name">
+      sqoop用法
     </h1>
   
 
         
-        <a href="/2018/12/21/pyhive-mysql/" class="archive-article-date">
-  	<time datetime="2018-12-21T15:35:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
+        <a href="/2019/12/20/sqoop-usage/" class="archive-article-date">
+  	<time datetime="2019-12-20T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
 </a>
         
       </header>
@@ -232,236 +231,184 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于hive查询结果是不能直接保存到mysql的，有人会用sqoop，相对还是不方便。当然了，肯定还有一些其它的hive~mysql互导工具，通常我们用python驱动hiveserver2，hivecli官方并不建议，也利用python将结果保存到mysql。那么python操作hive查询结果保存到mysql过程是怎么样的呢？</p>
-          
-        
-          <a class="article-more-a" href="/2018/12/21/pyhive-mysql/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/21/pyhive-mysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-redis-usage" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/12/redis-usage/">redis 用法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/12/redis-usage/" class="archive-article-date">
-  	<time datetime="2018-12-12T14:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-12</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作中经常会用到redis，踩了一些坑，自己也做了一些总结，通过查阅网上资料，不断完善，这里记录一下。</p>
-<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><ul>
-<li>Redis基础</li>
-<li>redis 内存淘汰策略</li>
-<li>Redis 常见用法</li>
-<li>Redis 3种去重方式</li>
-<li>Redis哨兵模式</li>
-<li>Redis 读写分离</li>
-<li>Redis集群模式</li>
-<li>Codis 用法</li>
-<li>Jodis - java API</li>
-<li>Redis常见应用场景</li>
+        <p>sqoop稳定版本:<code>sqoop-1.4.6</code>。</p>
+<h2 id="一-Mysql-数据导入到-Hive"><a href="#一-Mysql-数据导入到-Hive" class="headerlink" title="一. Mysql 数据导入到 Hive"></a>一. Mysql 数据导入到 Hive</h2><p>1). 将<code>mysql</code>的<code>people_access_log</code>表导入到<code>hive</code>表<code>web.people_access_log</code>，并且<code>hive</code>中的表不存在。<br><code>mysql</code>中表<code>people_access_log</code>数据为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>,<span class="number">15110101010</span>,<span class="number">1577003281739</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">2</span>,<span class="number">15110101011</span>,<span class="number">1577003281749</span>,<span class="string">'112.16.1.23'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">3</span>,<span class="number">15110101012</span>,<span class="number">1577003281759</span>,<span class="string">'193.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br><span class="line"><span class="number">4</span>,<span class="number">15110101013</span>,<span class="number">1577003281769</span>,<span class="string">'112.18.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">5</span>,<span class="number">15110101014</span>,<span class="number">1577003281779</span>,<span class="string">'112.168.10.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">6</span>,<span class="number">15110101015</span>,<span class="number">1577003281789</span>,<span class="string">'11.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br></pre></td></tr></table></figure></p>
+<p>将<code>mysql</code>数据导入<code>hive</code>的命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">-m 1 \</span><br><span class="line">--hive-import \</span><br><span class="line">--create-hive-table \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--hive-table web.people_access_log</span><br></pre></td></tr></table></figure></p>
+<p>该命令会启用一个<code>mapreduce</code>任务，将<code>mysql</code>数据导入到<code>hive</code>表，并且指定了<code>hive</code>表的分隔符为<code>\t</code>，如果不指定则为默认分隔符<code>^A(ctrl+A)</code>。</p>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--connect</code></td>
+<td style="text-align:center"><code>mysql</code>的连接信息</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--username</code></td>
+<td style="text-align:center"><code>mysql</code>的用户名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--password</code></td>
+<td style="text-align:center"><code>mysql</code>的密码</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--table</code></td>
+<td style="text-align:center">被导入的<code>mysql</code>源表名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-m</code></td>
+<td style="text-align:center">并行导入启用的<code>map</code>任务数量，与<code>--num-mapper</code>含义一样</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--hive-import</code></td>
+<td style="text-align:center">插入数据到<code>hive</code>当中，使用<code>hive</code>默认的分隔符，可以使用<code>--fields-terminated-by</code>参数来指定分隔符。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-- hive-table</code></td>
+<td style="text-align:center">hive当中的表名</td>
+</tr>
+</tbody>
+</table>
+<p>2). 也可以通过<code>--query</code>条件查询<code>Mysql</code>数据，将查询结果导入到<code>Hive</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--query <span class="string">'select * from people_access_log where \$CONDITIONS and url = "https://www.baidu.com"'</span> \</span><br><span class="line">--target-dir /user/hive/warehouse/web/people_access_log \</span><br><span class="line">--delete-target-dir \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">-m 1</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--query</code></td>
+<td style="text-align:center">后接查询语句，条件查询需要<code>\$CONDITIONS and</code>连接查询条件，这里的<code>\$</code>表示转义<code>$</code>，必须有.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--delete-target-dir</code></td>
+<td style="text-align:center">如果目标<code>hive</code>表目录存在，则删除，相当于<code>overwrite</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二-Hive数据导入到Mysql"><a href="#二-Hive数据导入到Mysql" class="headerlink" title="二. Hive数据导入到Mysql"></a>二. Hive数据导入到Mysql</h2><p>还是使用上面的<code>hive</code>表<code>web.people_access_log</code>,将其导入到<code>mysql</code>中的<code>people_access_log_out</code>表中.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop <span class="built_in">export</span> \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log_out \</span><br><span class="line">--input-fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--<span class="built_in">export</span>-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--num-mappers 1</span><br></pre></td></tr></table></figure></p>
+<p>注意：<code>mysql</code>表<code>people_access_log_out</code>需要提前建好，否则报错：<code>ErrorException: Table &#39;test.people_access_log_out&#39; doesn&#39;t exist</code>。如果有<code>id</code>自增列，<code>hive</code>表也需要有，<code>hive</code>表与<code>mysql</code>表字段必须完全相同。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> people_access_log_out <span class="keyword">like</span> people_access_log;</span><br></pre></td></tr></table></figure></p>
+<p>执行完一个<code>mr</code>任务后，成功导入到<code>mysql</code>表<code>people_access_log_out</code>中.</p>
+<h2 id="三-mysql数据增量导入hive"><a href="#三-mysql数据增量导入hive" class="headerlink" title="三. mysql数据增量导入hive"></a>三. mysql数据增量导入hive</h2><p>实际中<code>mysql</code>数据会不断增加，这时候需要用<code>sqoop</code>将数据增量导入<code>hive</code>，然后进行海量数据分析统计。增量数据导入分两种，一是基于递增列的增量数据导入（<code>Append</code>方式）。二是基于时间列的增量数据导入（<code>LastModified</code>方式）。有几个核心参数：</p>
+<ul>
+<li><code>–check-column</code>:用来指定一些列，这些列在增量导入时用来检查这些数据是否作为增量数据进行导入，和关系型数据库中的自增字段及时间戳类似.<strong>注意</strong>:这些被指定的列的类型不能使任意字符类型，如char、varchar等类型都是不可以的，同时<code>–check-column</code>可以去指定多个列</li>
+<li><code>–incremental</code>:用来指定增量导入的模式，两种模式分别为<code>Append</code>和<code>Lastmodified</code></li>
+<li><code>–last-value</code>:指定上一次导入中检查列指定字段最大值</li>
 </ul>
-          
-        
-          <a class="article-more-a" href="/2018/12/12/redis-usage/#more">more >></a>
-        
+<h3 id="1-基于递增列Append导入"><a href="#1-基于递增列Append导入" class="headerlink" title="1. 基于递增列Append导入"></a>1. 基于递增列Append导入</h3><p>接着前面的日志表，里面每行有一个唯一标识自增列<code>ID</code>，在关系型数据库中以主键形式存在。之前已经将id在<code>0~6</code>之间的编号的订单导入到<code>Hadoop</code>中了（这里为<code>HDFS</code>），现在一段时间后我们需要将近期产生的新的订 单数据导入<code>Hadoop</code>中（这里为<code>HDFS</code>），以供后续数仓进行分析。此时我们只需要指定<code>–incremental</code> 参数为<code>append</code>，<code>–last-value</code>参数为<code>6</code>即可。表示只从<code>id</code>大于<code>6</code>后即<code>7</code>开始导入。</p>
+<h4 id="1-创建hive表"><a href="#1-创建hive表" class="headerlink" title="1). 创建hive表"></a>1). 创建<code>hive</code>表</h4><p>首先我们需要创建一张与<code>mysql</code>结构相同的<code>hive</code>表，假设指定字段分隔符为<code>\t</code>，后面导入数据时候分隔符也需要保持一致。</p>
+<h4 id="2-创建job"><a href="#2-创建job" class="headerlink" title="2). 创建job"></a>2). 创建<code>job</code></h4><p>增量导入肯定是多次进行的，可能每隔一个小时、一天等，所以需要创建计划任务，然后定时执行即可。我们都知道<code>hive</code>的数据是存在<code>hdfs</code>上面的，我们创建<code>sqoop job</code>的时候需要指定<code>hive</code>的数据表对应的<code>hdfs</code>目录，然后定时执行这个<code>job</code>即可。</p>
+<p>当前<code>mysql</code>中数据，<code>hive</code>中数据与<code>mysql</code>一样也有6条：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><code>id</code></th>
+<th style="text-align:center"><code>user_id</code></th>
+<th style="text-align:center"><code>access_time</code></th>
+<th style="text-align:center"><code>ip</code></th>
+<th style="text-align:center"><code>url</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">15110101010</td>
+<td style="text-align:center">1577003281739</td>
+<td style="text-align:center">112.168.1.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">15110101011</td>
+<td style="text-align:center">1577003281749</td>
+<td style="text-align:center">112.16.1.23</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">15110101012</td>
+<td style="text-align:center">1577003281759</td>
+<td style="text-align:center">193.168.1.2</td>
+<td style="text-align:center"><a href="https://www.taobao.com" target="_blank" rel="noopener">https://www.taobao.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">15110101013</td>
+<td style="text-align:center">1577003281769</td>
+<td style="text-align:center">112.18.1.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">15110101014</td>
+<td style="text-align:center">1577003281779</td>
+<td style="text-align:center">112.168.10.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">15110101015</td>
+<td style="text-align:center">1577003281789</td>
+<td style="text-align:center">11.168.1.2</td>
+<td style="text-align:center"><a href="https://www.taobao.com" target="_blank" rel="noopener">https://www.taobao.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>增量导入有几个参数，保证下次同步的时候可以接着上次继续同步.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sqoop job --create mysql2hive_job -- import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">--target-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--check-column id \</span><br><span class="line">--incremental append \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--last-value 6 \</span><br><span class="line">-m 1</span><br></pre></td></tr></table></figure></p>
+<p>这里通过<code>sqoop job --create job_name</code>命令创建了一个名为<code>mysql2hive_job</code>的<code>sqoop job</code>。</p>
+<h4 id="执行job"><a href="#执行job" class="headerlink" title="执行job"></a>执行job</h4><p>创建好了<code>job</code>，后面只需要定时周期执行这个提前定义好的<code>job</code>即可。我们先往<code>mysql</code>里面插入2条数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`people_access_log`</span> (<span class="string">`id`</span>,<span class="string">`user_id`</span>,<span class="string">`access_time`</span>,<span class="string">`ip`</span>,<span class="string">`url`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="number">1577003281790</span>,<span class="string">'112.168.1.3'</span>,<span class="string">'https://www.qq.com'</span>),</span><br><span class="line">(<span class="number">8</span>,<span class="number">15110101017</span>,<span class="number">1577003281791</span>,<span class="string">'112.1.1.3'</span>,<span class="string">'https://www.microsoft.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样<code>mysql</code>里面就会多了2条数据。此时<code>hive</code>里面只有<code>id</code>为<code>1 ~ 6</code>的数据，执行同步<code>job</code>使用以下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqoop job -<span class="built_in">exec</span> mysql2hive_job</span><br></pre></td></tr></table></figure></p>
+<p>执行完成后，发现刚才<code>mysql</code>新加入的<code>id</code>为<code>7 ~ 8</code>的两条数据已经同步到<code>hive</code>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	1577003281739	112.168.1.2	https://www.baidu.com</span><br><span class="line">2	15110101011	1577003281749	112.16.1.23	https://www.baidu.com</span><br><span class="line">3	15110101012	1577003281759	193.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	1577003281769	112.18.1.2	https://www.baidu.com</span><br><span class="line">5	15110101014	1577003281779	112.168.10.2	https://www.baidu.com</span><br><span class="line">6	15110101015	1577003281789	11.168.1.2	https://www.taobao.com</span><br><span class="line">7	15110101016	1577003281790	112.168.1.3	https://www.qq.com</span><br><span class="line">8	15110101017	1577003281791	112.1.1.3	https://www.microsoft.com</span><br></pre></td></tr></table></figure></p>
+<p>由于实际场景中，<code>mysql</code>表中的数据，比如订单表等，通常是一致有数据进入的，这时候只需要将<code>sqoop job -exec mysql2hive_job</code>这个命令定时(比如说10分钟频率)执行一次，就能将数据10分钟同步一次到<code>hive</code>数据仓库。</p>
+<h3 id="2-Lastmodified导入实战"><a href="#2-Lastmodified导入实战" class="headerlink" title="2. Lastmodified导入实战"></a>2. Lastmodified导入实战</h3><p><code>append</code>适合业务系统库，一般业务系统表会通过自增ID作为主键标识唯一性。<code>Lastmodified</code>适合ETL的数据根据时间戳字段导入，表示只导入比这个时间戳大，即比这个时间晚的数据。</p>
+<h4 id="1-新建一张表"><a href="#1-新建一张表" class="headerlink" title="1). 新建一张表"></a>1). 新建一张表</h4>
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大数据</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/12/redis-usage/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>你的赞赏是我不屑的动力！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/weChatPay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-hive-knowledge" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/hive-knowledge/">hive 常用知识点</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/04/hive-knowledge/" class="archive-article-date">
-  	<time datetime="2018-11-04T12:15:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="hive知识点"><a href="#hive知识点" class="headerlink" title="hive知识点"></a>hive知识点</h1><p><img src="http://qiniu.ikeguang.com/image/ikeguang.com/share/trees.jpg" alt=""><br>工作中<code>hive</code>常用知识点。</p>
-<h2 id="创建hive表"><a href="#创建hive表" class="headerlink" title="创建hive表"></a>创建hive表</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 新建个数据库test</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> test.test(<span class="keyword">id</span> <span class="keyword">string</span>, <span class="keyword">name</span> <span class="keyword">string</span>);</span><br></pre></td></tr></table></figure>
-<p>这里创建了一个名为<code>test</code>的<code>hive</code>外部表，外部表与普通表的区别：</p>
-<ol>
-<li>在导入数据到外部表，数据并没有移动到自己的数据仓库目录下，也就是说外部表中的数据并不是由它自己来管理的！而表则不一样；</li>
-<li>在删除表的时候，Hive将会把属于表的元数据和数据全部删掉；而删除外部表的时候，Hive仅仅删除外部表的元数据，数据是不会删除的！那么，应该如何选择使用哪种表呢？在大多数情况没有太多的区别，因此选择只是个人喜好的问题。但是作为一个经验，如果所有处理都需要由Hive完成，那么你应该创建表，否则使用外部表！</li>
-</ol>
-          
-        
-          <a class="article-more-a" href="/2018/11/04/hive-knowledge/#more">more >></a>
-        
-      
-
+        <!-- 
+        <div style="color:#666">
+          <span id="busuanzi_container_page_pv">
+            本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+          </span>
+        </div>
+        -->
       
     </div>
     <div class="article-info article-info-index">
@@ -471,10 +418,6 @@ var _hmt = _hmt || [];
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
         		</li>
@@ -483,201 +426,12 @@ var _hmt = _hmt || [];
 	</div>
 
       
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/hive-knowledge/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-hive-user-table-recover" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/14/hive-user-table-recover/">hive亿级用户表死而复生的经历</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/14/hive-user-table-recover/" class="archive-article-date">
-  	<time datetime="2018-10-14T06:38:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-14</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数据组有一个需求，创建一张hive用户表，包含用户的基本信息，后续可能会添加字段，作为用户的标签，还有一些字段需要更新，也就是说这张用户表需要每天：insert、update、delete、添加字段。</p>
-          
-        
-          <a class="article-more-a" href="/2018/10/14/hive-user-table-recover/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/14/hive-user-table-recover/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-python-email" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/29/python-email/">利用python发送email邮件</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/29/python-email/" class="archive-article-date">
-  	<time datetime="2018-09-29T12:33:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-29</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公司大数据业务开始时间不长，大数据监控体系还没有，对于各种程序的定时监控也没有好的解决方案，比如在程序、数据异常时，第一时间发一封邮件通知相关人员也是好的。考虑到好多定时任务是用python来触发，管理的，我们选择了轻便，灵活，功能强大的python语言来实现发送邮件功能。</p>
-<ul>
-<li>发送邮件方法这里给出Python2代码如下：</li>
-</ul>
-          
-        
-          <a class="article-more-a" href="/2018/09/29/python-email/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">监控</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
         		</li>
       		
 		</ul>
@@ -685,16 +439,75 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/29/python-email/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="/image/微信.jpg" alt="微信分享二维码" width="215px">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/17/spring-issue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring常见问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -709,9 +522,54 @@ var _hmt = _hmt || [];
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Mysql-数据导入到-Hive"><span class="toc-number">1.</span> <span class="toc-text">一. Mysql 数据导入到 Hive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Hive数据导入到Mysql"><span class="toc-number">2.</span> <span class="toc-text">二. Hive数据导入到Mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-mysql数据增量导入hive"><span class="toc-number">3.</span> <span class="toc-text">三. mysql数据增量导入hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基于递增列Append导入"><span class="toc-number">3.1.</span> <span class="toc-text">1. 基于递增列Append导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建hive表"><span class="toc-number">3.1.1.</span> <span class="toc-text">1). 创建hive表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建job"><span class="toc-number">3.1.2.</span> <span class="toc-text">2). 创建job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行job"><span class="toc-number">3.1.3.</span> <span class="toc-text">执行job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Lastmodified导入实战"><span class="toc-number">3.2.</span> <span class="toc-text">2. Lastmodified导入实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新建一张表"><span class="toc-number">3.2.1.</span> <span class="toc-text">1). 新建一张表</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
+
+
+  
+  
+  
+
+  
+  
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-3550377699413798" data-ad-slot="8063499417"></ins>
+     <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="/css/gitment.css">
+<script src="/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "Fri Dec 20 2019 22:21:00 GMT+0800",
+  owner: 'ddxygq',
+  repo: 'ddxygq.github.io',
+  oauth: {
+    client_id: 'c40772ee5582963d90df',
+    client_secret: 'e4927d60b7d03439a5dab4858239c26643fe03e9',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
 
@@ -728,525 +586,6 @@ var _hmt = _hmt || [];
     });
 </script>
 -->
-  
-    <article id="post-hive-hbase-user-table" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/26/hive-hbase-user-table/">基于hive关联hbase用户表的创建</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/26/hive-hbase-user-table/" class="archive-article-date">
-  	<time datetime="2018-09-26T14:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-26</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我司有一个需求，对于存在于hive中的用户行为日志数据，需要做一个用户表，用户数截至目前大概是1.2亿。常规的想法是：建一个用户表，定时把前一天的新用户加入用户表中，判断规则是用户guid存在于用户表中则不管，否则加入用户表。由于有5张表，<br>一共大概3亿条数据，第一次做，这样判断好像太暴力了：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">table</span> user_table (<span class="keyword">select</span> guid <span class="keyword">from</span> <span class="keyword">data</span> <span class="keyword">where</span> guid <span class="keyword">not</span> <span class="keyword">in</span> user_table <span class="keyword">and</span> guid <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>);</span><br></pre></td></tr></table></figure></p>
-          
-        
-          <a class="article-more-a" href="/2018/09/26/hive-hbase-user-table/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hbase</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/26/hive-hbase-user-table/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-a-girl" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/17/a-girl/">一个女生</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/17/a-girl/" class="archive-article-date">
-  	<time datetime="2018-09-17T15:10:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!--
-下午还是像往常一样写代码，突然间想到她，想了一会之后，感觉心里很难过...
-
-那是xxxx年10月份的时候，我们数学院的信计专业与对日贸易专业的联谊活动。在晚上，对日整个专业中，我一眼就看到了她，我自己心里也清楚，自己是喜欢上了她。
-
-然后我加了她qq，聊的还好。可能是她这种女孩儿，觉得这是一种普通友谊关系而已，而我就不一样了，我觉得我确实已经深深得喜欢上她了。
-
-后来...
-
-在很长一段时间里，我觉得她再也不会理我了，但是我知道我心里一直喜欢着她。
-
-现在想起来，往事历历在目，如水般清晰！
-
-在大四的时候，有一个晚上，我正在寄送一个快递（记得是圆通快递)，她给我发了一条微信消息。让我帮她一个忙，我说稍等，有点忙，然而我飞快跑到宿舍，来不及洗头了(真不应该)，穿着黑色的运动服，拿上一个鼠标(很久以前就想送她的)，来到了她说的那个教室。
-
-她很客气，给我准备了一个香蕉和一瓶牛奶(没喝过，6块钱一瓶的)，我就在她的左边坐下。
-
-她穿着一件白色的卫衣，很柔软的衣服，裤子不好意思看，我说特意穿这么好来见我吗，她说不是。
-
-原来是她最近在面试，遇到了一个数学难题，是初中的一道二次函数题，用二次函数图像对称的性质(X1 + X1,X1 x X2)解决的，还要加上反证法。作为数学院的一名学生，我经过分析，我当然很快就把这个选择题做出来了。然后就给她讲解了一把，在她面前狠狠的得瑟了一把，心里很是满足。
-
-她答应了我一起去江边走走的请求，我们从13教D区出去，她找了一辆hello bike，我则找了一辆酷骑。我先手推了一会，把那个香蕉吃了，味道不错，然后骑到学校北门。她说有点晚了，要不算了，我当然不干呀，于是一起从北门出去了。
-
-刚出去，骑到没几步，就下小雨了，天啊(心里无数个羊驼飘过)！她就说，要不算了！
-
-我哪干，她没办法，她很无奈。
-
-现在想起来，当初为什么那么傻逼，情商低，后悔死了！
-
-她没办法，就说去(荆职）荆州职业技术学院。骑车在路上，她说我要骑车在里面，安全感强一些，我跟她换了位置！小雨仍然在下着，我们到了那里后，她说头发湿了，我说没有吧(我也是服了自己)！
-
-在学校里面走了一圈，然后出来时雨好像下大了，于是我们骑车快速回去，她从西门后门回宿舍了，我从来不知道这个门。我就快速骑车回去了。
-
-后来...
-
-时光荏苒，就在今天，此时此刻，我想到了这里，停下了手中的代码也不知道多长时间了。
-
-想到这里，心里很难过！
--->
-<p>啥都没有，哈哈。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">青春</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/17/a-girl/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-hadoop-security" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/12/hadoop-security/">spark集群被植入挖矿程序</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/12/hadoop-security/" class="archive-article-date">
-  	<time datetime="2018-09-12T14:45:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-12</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前段时间在微信群里就看到有人hadoop集群成为黑客的挖矿工具的事，好像还有一个哥们儿因为这事儿被公司开了（新人背锅）。没想到今天发现我们的spark集群竟然也成为挖矿工具。^ _ ^</p>
-<p>我们的机器是腾讯云的，由于升级kafka的缘故，将spark程序停了，这时候通过监控（运维开的只读web页面）发现cpu利用率在100%，然后一个哥们儿发现后台有一个进程：<br><img src="/2018/09/12/hadoop-security/1.png" alt=""></p>
-          
-        
-          <a class="article-more-a" href="/2018/09/12/hadoop-security/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">大数据安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/12/hadoop-security/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-hive-orc" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/hive-orc/">hive中orc格式表的数据导入</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/04/hive-orc/" class="archive-article-date">
-  	<time datetime="2018-09-04T14:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>hive创建orc格式表不能像textfile格式一样直接load数据到表中，需要创建临时textfile表，然后通过insert into 或者insert overwrite到orc存储格式表中。<br>如果你直接load数据到orc格式表中，这个步骤可以成功，但是会发现’select * from table limit 1;’这个语句都会报错，也就是说直接load数据是不可行的。<br>对于hive中orc格式表可以参见：<a href="https://www.cnblogs.com/ITtangtang/p/7677912.html" target="_blank" rel="noopener">大数据：Hive - ORC 文件存储格式</a></p>
-</blockquote>
-<h2 id="1-、创建表"><a href="#1-、创建表" class="headerlink" title="1)、创建表"></a>1)、创建表</h2><h3 id="临时表"><a href="#临时表" class="headerlink" title="临时表"></a>临时表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> db.tmp</span><br><span class="line">(</span><br><span class="line"><span class="keyword">name</span> <span class="keyword">string</span>,</span><br><span class="line">age <span class="built_in">int</span></span><br><span class="line">)</span><br><span class="line">partitioned <span class="keyword">by</span> (dt <span class="keyword">string</span>, <span class="keyword">hour</span> <span class="keyword">string</span>, msgtype <span class="keyword">string</span>, <span class="keyword">action</span> <span class="keyword">string</span>)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span>;</span><br></pre></td></tr></table></figure>
-          
-        
-          <a class="article-more-a" href="/2018/09/04/hive-orc/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/04/hive-orc/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-redisauth" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/31/redisauth/">用了redis之后的感悟与总结</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/31/redisauth/" class="archive-article-date">
-  	<time datetime="2018-08-31T14:08:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-31</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>redis用的多，有时候搞混了哈，用了一个没有密码的redis，而我以为是一个有密码的另外一个redis，这时候会报这个错误：<br><img src="/2018/08/31/redisauth/redisauth.jpg" alt="so"></p>
-          
-        
-          <a class="article-more-a" href="/2018/08/31/redisauth/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/31/redisauth/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
-  
-
-
           </div>
         </div>
       </div>
@@ -1273,8 +612,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

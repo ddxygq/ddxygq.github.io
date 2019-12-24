@@ -211,6 +211,241 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sqoop-usage" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/20/sqoop-usage/">sqoop用法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/20/sqoop-usage/" class="archive-article-date">
+  	<time datetime="2019-12-20T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>sqoop稳定版本:<code>sqoop-1.4.6</code>。</p>
+<h2 id="一-Mysql-数据导入到-Hive"><a href="#一-Mysql-数据导入到-Hive" class="headerlink" title="一. Mysql 数据导入到 Hive"></a>一. Mysql 数据导入到 Hive</h2><p>1). 将<code>mysql</code>的<code>people_access_log</code>表导入到<code>hive</code>表<code>web.people_access_log</code>，并且<code>hive</code>中的表不存在。<br><code>mysql</code>中表<code>people_access_log</code>数据为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>,<span class="number">15110101010</span>,<span class="number">1577003281739</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">2</span>,<span class="number">15110101011</span>,<span class="number">1577003281749</span>,<span class="string">'112.16.1.23'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">3</span>,<span class="number">15110101012</span>,<span class="number">1577003281759</span>,<span class="string">'193.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br><span class="line"><span class="number">4</span>,<span class="number">15110101013</span>,<span class="number">1577003281769</span>,<span class="string">'112.18.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">5</span>,<span class="number">15110101014</span>,<span class="number">1577003281779</span>,<span class="string">'112.168.10.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">6</span>,<span class="number">15110101015</span>,<span class="number">1577003281789</span>,<span class="string">'11.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br></pre></td></tr></table></figure></p>
+<p>将<code>mysql</code>数据导入<code>hive</code>的命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">-m 1 \</span><br><span class="line">--hive-import \</span><br><span class="line">--create-hive-table \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--hive-table web.people_access_log</span><br></pre></td></tr></table></figure></p>
+<p>该命令会启用一个<code>mapreduce</code>任务，将<code>mysql</code>数据导入到<code>hive</code>表，并且指定了<code>hive</code>表的分隔符为<code>\t</code>，如果不指定则为默认分隔符<code>^A(ctrl+A)</code>。</p>
+<p><strong>参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--connect</code></td>
+<td style="text-align:center"><code>mysql</code>的连接信息</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--username</code></td>
+<td style="text-align:center"><code>mysql</code>的用户名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--password</code></td>
+<td style="text-align:center"><code>mysql</code>的密码</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--table</code></td>
+<td style="text-align:center">被导入的<code>mysql</code>源表名</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-m</code></td>
+<td style="text-align:center">并行导入启用的<code>map</code>任务数量，与<code>--num-mapper</code>含义一样</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--hive-import</code></td>
+<td style="text-align:center">插入数据到<code>hive</code>当中，使用<code>hive</code>默认的分隔符，可以使用<code>--fields-terminated-by</code>参数来指定分隔符。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-- hive-table</code></td>
+<td style="text-align:center">hive当中的表名</td>
+</tr>
+</tbody>
+</table>
+<p>2). 也可以通过<code>--query</code>条件查询<code>Mysql</code>数据，将查询结果导入到<code>Hive</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--query <span class="string">'select * from people_access_log where \$CONDITIONS and url = "https://www.baidu.com"'</span> \</span><br><span class="line">--target-dir /user/hive/warehouse/web/people_access_log \</span><br><span class="line">--delete-target-dir \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">-m 1</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--query</code></td>
+<td style="text-align:center">后接查询语句，条件查询需要<code>\$CONDITIONS and</code>连接查询条件，这里的<code>\$</code>表示转义<code>$</code>，必须有.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--delete-target-dir</code></td>
+<td style="text-align:center">如果目标<code>hive</code>表目录存在，则删除，相当于<code>overwrite</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二-Hive数据导入到Mysql"><a href="#二-Hive数据导入到Mysql" class="headerlink" title="二. Hive数据导入到Mysql"></a>二. Hive数据导入到Mysql</h2><p>还是使用上面的<code>hive</code>表<code>web.people_access_log</code>,将其导入到<code>mysql</code>中的<code>people_access_log_out</code>表中.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop <span class="built_in">export</span> \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log_out \</span><br><span class="line">--input-fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--<span class="built_in">export</span>-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--num-mappers 1</span><br></pre></td></tr></table></figure></p>
+<p>注意：<code>mysql</code>表<code>people_access_log_out</code>需要提前建好，否则报错：<code>ErrorException: Table &#39;test.people_access_log_out&#39; doesn&#39;t exist</code>。如果有<code>id</code>自增列，<code>hive</code>表也需要有，<code>hive</code>表与<code>mysql</code>表字段必须完全相同。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> people_access_log_out <span class="keyword">like</span> people_access_log;</span><br></pre></td></tr></table></figure></p>
+<p>执行完一个<code>mr</code>任务后，成功导入到<code>mysql</code>表<code>people_access_log_out</code>中.</p>
+<h2 id="三-mysql数据增量导入hive"><a href="#三-mysql数据增量导入hive" class="headerlink" title="三. mysql数据增量导入hive"></a>三. mysql数据增量导入hive</h2><p>实际中<code>mysql</code>数据会不断增加，这时候需要用<code>sqoop</code>将数据增量导入<code>hive</code>，然后进行海量数据分析统计。增量数据导入分两种，一是基于递增列的增量数据导入（<code>Append</code>方式）。二是基于时间列的增量数据导入（<code>LastModified</code>方式）。有几个核心参数：</p>
+<ul>
+<li><code>–check-column</code>:用来指定一些列，这些列在增量导入时用来检查这些数据是否作为增量数据进行导入，和关系型数据库中的自增字段及时间戳类似.<strong>注意</strong>:这些被指定的列的类型不能使任意字符类型，如char、varchar等类型都是不可以的，同时<code>–check-column</code>可以去指定多个列</li>
+<li><code>–incremental</code>:用来指定增量导入的模式，两种模式分别为<code>Append</code>和<code>Lastmodified</code></li>
+<li><code>–last-value</code>:指定上一次导入中检查列指定字段最大值</li>
+</ul>
+<h3 id="1-基于递增列Append导入"><a href="#1-基于递增列Append导入" class="headerlink" title="1. 基于递增列Append导入"></a>1. 基于递增列Append导入</h3><p>接着前面的日志表，里面每行有一个唯一标识自增列<code>ID</code>，在关系型数据库中以主键形式存在。之前已经将id在<code>0~6</code>之间的编号的订单导入到<code>Hadoop</code>中了（这里为<code>HDFS</code>），现在一段时间后我们需要将近期产生的新的订 单数据导入<code>Hadoop</code>中（这里为<code>HDFS</code>），以供后续数仓进行分析。此时我们只需要指定<code>–incremental</code> 参数为<code>append</code>，<code>–last-value</code>参数为<code>6</code>即可。表示只从<code>id</code>大于<code>6</code>后即<code>7</code>开始导入。</p>
+<h4 id="1-创建hive表"><a href="#1-创建hive表" class="headerlink" title="1). 创建hive表"></a>1). 创建<code>hive</code>表</h4><p>首先我们需要创建一张与<code>mysql</code>结构相同的<code>hive</code>表，假设指定字段分隔符为<code>\t</code>，后面导入数据时候分隔符也需要保持一致。</p>
+<h4 id="2-创建job"><a href="#2-创建job" class="headerlink" title="2). 创建job"></a>2). 创建<code>job</code></h4><p>增量导入肯定是多次进行的，可能每隔一个小时、一天等，所以需要创建计划任务，然后定时执行即可。我们都知道<code>hive</code>的数据是存在<code>hdfs</code>上面的，我们创建<code>sqoop job</code>的时候需要指定<code>hive</code>的数据表对应的<code>hdfs</code>目录，然后定时执行这个<code>job</code>即可。</p>
+<p>当前<code>mysql</code>中数据，<code>hive</code>中数据与<code>mysql</code>一样也有6条：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><code>id</code></th>
+<th style="text-align:center"><code>user_id</code></th>
+<th style="text-align:center"><code>access_time</code></th>
+<th style="text-align:center"><code>ip</code></th>
+<th style="text-align:center"><code>url</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">15110101010</td>
+<td style="text-align:center">1577003281739</td>
+<td style="text-align:center">112.168.1.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">15110101011</td>
+<td style="text-align:center">1577003281749</td>
+<td style="text-align:center">112.16.1.23</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">15110101012</td>
+<td style="text-align:center">1577003281759</td>
+<td style="text-align:center">193.168.1.2</td>
+<td style="text-align:center"><a href="https://www.taobao.com" target="_blank" rel="noopener">https://www.taobao.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">15110101013</td>
+<td style="text-align:center">1577003281769</td>
+<td style="text-align:center">112.18.1.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">15110101014</td>
+<td style="text-align:center">1577003281779</td>
+<td style="text-align:center">112.168.10.2</td>
+<td style="text-align:center"><a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a></td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">15110101015</td>
+<td style="text-align:center">1577003281789</td>
+<td style="text-align:center">11.168.1.2</td>
+<td style="text-align:center"><a href="https://www.taobao.com" target="_blank" rel="noopener">https://www.taobao.com</a></td>
+</tr>
+</tbody>
+</table>
+<p>增量导入有几个参数，保证下次同步的时候可以接着上次继续同步.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sqoop job --create mysql2hive_job -- import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">--target-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--check-column id \</span><br><span class="line">--incremental append \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--last-value 6 \</span><br><span class="line">-m 1</span><br></pre></td></tr></table></figure></p>
+<p>这里通过<code>sqoop job --create job_name</code>命令创建了一个名为<code>mysql2hive_job</code>的<code>sqoop job</code>。</p>
+<h4 id="执行job"><a href="#执行job" class="headerlink" title="执行job"></a>执行job</h4><p>创建好了<code>job</code>，后面只需要定时周期执行这个提前定义好的<code>job</code>即可。我们先往<code>mysql</code>里面插入2条数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`people_access_log`</span> (<span class="string">`id`</span>,<span class="string">`user_id`</span>,<span class="string">`access_time`</span>,<span class="string">`ip`</span>,<span class="string">`url`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="number">1577003281790</span>,<span class="string">'112.168.1.3'</span>,<span class="string">'https://www.qq.com'</span>),</span><br><span class="line">(<span class="number">8</span>,<span class="number">15110101017</span>,<span class="number">1577003281791</span>,<span class="string">'112.1.1.3'</span>,<span class="string">'https://www.microsoft.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这样<code>mysql</code>里面就会多了2条数据。此时<code>hive</code>里面只有<code>id</code>为<code>1 ~ 6</code>的数据，执行同步<code>job</code>使用以下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqoop job -<span class="built_in">exec</span> mysql2hive_job</span><br></pre></td></tr></table></figure></p>
+<p>执行完成后，发现刚才<code>mysql</code>新加入的<code>id</code>为<code>7 ~ 8</code>的两条数据已经同步到<code>hive</code>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	1577003281739	112.168.1.2	https://www.baidu.com</span><br><span class="line">2	15110101011	1577003281749	112.16.1.23	https://www.baidu.com</span><br><span class="line">3	15110101012	1577003281759	193.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	1577003281769	112.18.1.2	https://www.baidu.com</span><br><span class="line">5	15110101014	1577003281779	112.168.10.2	https://www.baidu.com</span><br><span class="line">6	15110101015	1577003281789	11.168.1.2	https://www.taobao.com</span><br><span class="line">7	15110101016	1577003281790	112.168.1.3	https://www.qq.com</span><br><span class="line">8	15110101017	1577003281791	112.1.1.3	https://www.microsoft.com</span><br></pre></td></tr></table></figure></p>
+<p>由于实际场景中，<code>mysql</code>表中的数据，比如订单表等，通常是一致有数据进入的，这时候只需要将<code>sqoop job -exec mysql2hive_job</code>这个命令定时(比如说10分钟频率)执行一次，就能将数据10分钟同步一次到<code>hive</code>数据仓库。</p>
+<h3 id="2-Lastmodified导入实战"><a href="#2-Lastmodified导入实战" class="headerlink" title="2. Lastmodified导入实战"></a>2. Lastmodified导入实战</h3><p><code>append</code>适合业务系统库，一般业务系统表会通过自增ID作为主键标识唯一性。<code>Lastmodified</code>适合ETL的数据根据时间戳字段导入，表示只导入比这个时间戳大，即比这个时间晚的数据。</p>
+<h4 id="1-新建一张表"><a href="#1-新建一张表" class="headerlink" title="1). 新建一张表"></a>1). 新建一张表</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/20/sqoop-usage/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!--
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container',
+        blogId: '15845-1569417464692-996',
+        name: '数据分析挖掘与算法',
+        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
+        keyword: '验证码',
+    });
+</script>
+-->
+  
     <article id="post-spring-issue" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -343,7 +578,7 @@ var _hmt = _hmt || [];
       
         <h2 id="POP3"><a href="#POP3" class="headerlink" title="POP3"></a>POP3</h2><p>POP3是Post Office Protocol 3的简称，即邮局协议的第3个版本,它规定怎样将个人计算机连接到Internet的邮件服务器和下载电子邮件的电子协议。它是因特网电子邮件的第一个离线协议标准,POP3允许用户从服务器上把邮件存储到本地主机（即自己的计算机）上,同时删除保存在邮件服务器上的邮件，而POP3服务器则是遵循POP3协议的接收邮件服务器，用来接收电子邮件的。</p>
 <h2 id="IMAP"><a href="#IMAP" class="headerlink" title="IMAP"></a>IMAP</h2><p>IMAP全称是Internet Mail Access Protocol，即交互式邮件存取协议，它是跟POP3类似邮件访问标准协议之一。不同的是，开启了IMAP后，您在电子邮件客户端收取的邮件仍然保留在服务器上，同时在客户端上的操作都会反馈到服务器上，如：删除邮件，标记已读等，服务器上的邮件也会做相应的动作。所以无论从浏览器登录邮箱或者客户端软件登录邮箱，看到的邮件以及状态都是一致的。</p>
-<p>IMAP和POP3有什么区别?<br>POP3协议允许电子邮件客户端下载服务器上的邮件，但是在客户端的操作（如移动邮件、标记已读等），不会反馈到服务器上，比如通过客户端收取了邮箱中的3封邮件并移动到其他文件夹，邮箱服务器上的这些邮件是没有同时被移动的 。<br>而IMAP提供webmail 与电子邮件客户端之间的双向通信，客户端的操作都会反馈到服务器上，对邮件进行的操作，服务器上的邮件也会做相应的动作。<br>同时，IMAP像POP3那样提供了方便的邮件下载服务，让用户能进行离线阅读。IMAP提供的摘要浏览功能可以让你在阅读完所有的邮件到达时间、主题、发件人、大小等信息后才作出是否下载的决定。此外，IMAP 更好地支持了从多个不同设备中随时访问新邮件。</p>
+<p><strong>IMAP和POP3有什么区别?</strong><br>POP3协议允许电子邮件客户端下载服务器上的邮件，但是在客户端的操作（如移动邮件、标记已读等），不会反馈到服务器上，比如通过客户端收取了邮箱中的3封邮件并移动到其他文件夹，邮箱服务器上的这些邮件是没有同时被移动的 。<br>而IMAP提供webmail 与电子邮件客户端之间的双向通信，客户端的操作都会反馈到服务器上，对邮件进行的操作，服务器上的邮件也会做相应的动作。<br>同时，IMAP像POP3那样提供了方便的邮件下载服务，让用户能进行离线阅读。IMAP提供的摘要浏览功能可以让你在阅读完所有的邮件到达时间、主题、发件人、大小等信息后才作出是否下载的决定。此外，IMAP 更好地支持了从多个不同设备中随时访问新邮件。</p>
 <p><img src="http://qiniu.ikeguang.com/ikeguang.com/image/mailimap-pop3.png" alt=""></p>
 <p>总之，IMAP 整体上为用户带来更为便捷和可靠的体验。POP3 更易丢失邮件或多次下载相同的邮件，但 IMAP 通过邮件客户端与webmail 之间的双向同步功能很好地避免了这些问题。</p>
 <p> 注：若在web邮箱中设置了“保存到已发送”，使用客户端POP服务发信时，已发邮件也会自动同步到网页端“已发送”文件夹内。</p>
@@ -1119,117 +1354,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/20/flask-chapter11-beauty/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-flask-chapter10-mail" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/20/flask-chapter10-mail/">第十章-Python3中Web开发框架flask实现邮件功能</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/20/flask-chapter10-mail/" class="archive-article-date">
-  	<time datetime="2019-10-20T13:28:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-20</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>代码地址</strong>：<a href="https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter10-mail/app" target="_blank" rel="noopener">https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter10-mail/app</a></p>
-<p>本文翻译自<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support" target="_blank" rel="noopener">The Flask Mega-Tutorial Part X: Email Support</a></p>
-<p>这是Flask Mega-Tutorial系列的第十部分，在其中我将告诉你，应用如何向你的用户发送电子邮件，以及如何在电子邮件支持之上构建密码重置功能。</p>
-<p>现在，应用在数据库方面做得相当不错，所以在本章中，我想抛开这个主题，开始添加发送电子邮件的功能，这是大多数Web应用必需的另一个重要部分。</p>
-<p>为什么应用需要发送电子邮件给用户？ 原因很多，但其中一个常见的原因是解决与认证相关的问题。 在本章中，我将为忘记密码的用户添加密码重置功能。 当用户请求重置密码时，应用将发送包含特制链接的电子邮件。 用户然后需要点击该链接才能访问设置新密码的表单。</p>
-<p><em>本章的GitHub链接为：<a href="https://github.com/miguelgrinberg/microblog/tree/v0.10" target="_blank" rel="noopener">Browse</a>, <a href="https://github.com/miguelgrinberg/microblog/archive/v0.10.zip" target="_blank" rel="noopener">Zip</a>, <a href="https://github.com/miguelgrinberg/microblog/compare/v0.9...v0.10" target="_blank" rel="noopener">Diff</a>.</em></p>
-          
-        
-          <a class="article-more-a" href="/2019/10/20/flask-chapter10-mail/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/20/flask-chapter10-mail/">展开全文 >></a>
         </p>
       
 

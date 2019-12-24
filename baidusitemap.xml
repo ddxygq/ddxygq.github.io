@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
+    <lastmod>2019-12-24</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
+    <lastmod>2019-12-20</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
@@ -68,9 +74,6 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/07/flask-chapter3-form/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/12/05/chapter02-hive-wordcount/</loc>
