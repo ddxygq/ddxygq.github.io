@@ -232,8 +232,47 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>sqoop稳定版本:<code>sqoop-1.4.6</code>。</p>
-<h2 id="一-Mysql-数据导入到-Hive"><a href="#一-Mysql-数据导入到-Hive" class="headerlink" title="一. Mysql 数据导入到 Hive"></a>一. Mysql 数据导入到 Hive</h2><p>1). 将<code>mysql</code>的<code>people_access_log</code>表导入到<code>hive</code>表<code>web.people_access_log</code>，并且<code>hive</code>中的表不存在。<br><code>mysql</code>中表<code>people_access_log</code>数据为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>,<span class="number">15110101010</span>,<span class="number">1577003281739</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">2</span>,<span class="number">15110101011</span>,<span class="number">1577003281749</span>,<span class="string">'112.16.1.23'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">3</span>,<span class="number">15110101012</span>,<span class="number">1577003281759</span>,<span class="string">'193.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br><span class="line"><span class="number">4</span>,<span class="number">15110101013</span>,<span class="number">1577003281769</span>,<span class="string">'112.18.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">5</span>,<span class="number">15110101014</span>,<span class="number">1577003281779</span>,<span class="string">'112.168.10.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">6</span>,<span class="number">15110101015</span>,<span class="number">1577003281789</span>,<span class="string">'11.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h2><ul>
+<li>一. Sqoop介绍</li>
+<li>二. Mysql 数据导入到 Hive</li>
+<li>三. Hive数据导入到Mysql</li>
+<li>四. mysql数据增量导入hive</li>
+<li><ol>
+<li>基于递增列Append导入</li>
+</ol>
+</li>
+<li><ul>
+<li>1). 创建hive表</li>
+</ul>
+</li>
+<li><ul>
+<li>2). 创建job</li>
+</ul>
+</li>
+<li><ul>
+<li>3) 执行job</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>Lastmodified 导入实战</li>
+</ol>
+</li>
+<li><ul>
+<li>1). 新建一张表</li>
+</ul>
+</li>
+<li><ul>
+<li>2). 初始化hive表:</li>
+</ul>
+</li>
+</ul>
+<h2 id="一-Sqoop介绍"><a href="#一-Sqoop介绍" class="headerlink" title="一. Sqoop介绍"></a>一. Sqoop介绍</h2><p><code>Sqoop</code>是一个用来将<code>Hadoop</code>和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（例如：<code>MySQL、Oracle、Postgres</code>等）中的数据导进到<code>Hadoop</code>的<code>HDFS</code>中，也可以将<code>HDFS</code>的数据导进到关系型数据库中。对于某些<code>NoSQL</code>数据库它也提供了连接器。<code>Sqoop</code>，类似于其他<code>ETL</code>工具，使用元数据模型来判断数据类型并在数据从数据源转移到<code>Hadoop</code>时确保类型安全的数据处理。<code>Sqoop</code>专为大数据批量传输设计，能够分割数据集并创建<code>Hadoop</code>任务来处理每个区块。</p>
+<p><img src="http://qiniu.ikeguang.com/ikeguang.com/image/sqoop0.jfif" alt=""></p>
+<p><strong>本文版本说明</strong></p>
+<blockquote>
+<p><code>hadoop</code>版本 : <code>hadoop-2.7.2</code><br><code>hive版本</code> : <code>hive-2.1.0</code><br>sqoop版本:<code>sqoop-1.4.6</code></p>
+</blockquote>
+<h2 id="二-Mysql-数据导入到-Hive"><a href="#二-Mysql-数据导入到-Hive" class="headerlink" title="二. Mysql 数据导入到 Hive"></a>二. Mysql 数据导入到 Hive</h2><p>1). 将<code>mysql</code>的<code>people_access_log</code>表导入到<code>hive</code>表<code>web.people_access_log</code>，并且<code>hive</code>中的表不存在。<br><code>mysql</code>中表<code>people_access_log</code>数据为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>,<span class="number">15110101010</span>,<span class="number">1577003281739</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">2</span>,<span class="number">15110101011</span>,<span class="number">1577003281749</span>,<span class="string">'112.16.1.23'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">3</span>,<span class="number">15110101012</span>,<span class="number">1577003281759</span>,<span class="string">'193.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br><span class="line"><span class="number">4</span>,<span class="number">15110101013</span>,<span class="number">1577003281769</span>,<span class="string">'112.18.1.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">5</span>,<span class="number">15110101014</span>,<span class="number">1577003281779</span>,<span class="string">'112.168.10.2'</span>,<span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="number">6</span>,<span class="number">15110101015</span>,<span class="number">1577003281789</span>,<span class="string">'11.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span></span><br></pre></td></tr></table></figure></p>
 <p>将<code>mysql</code>数据导入<code>hive</code>的命令为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">-m 1 \</span><br><span class="line">--hive-import \</span><br><span class="line">--create-hive-table \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--hive-table web.people_access_log</span><br></pre></td></tr></table></figure></p>
 <p>该命令会启用一个<code>mapreduce</code>任务，将<code>mysql</code>数据导入到<code>hive</code>表，并且指定了<code>hive</code>表的分隔符为<code>\t</code>，如果不指定则为默认分隔符<code>^A(ctrl+A)</code>。</p>
 <p><strong>参数说明</strong></p>
@@ -294,10 +333,10 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h2 id="二-Hive数据导入到Mysql"><a href="#二-Hive数据导入到Mysql" class="headerlink" title="二. Hive数据导入到Mysql"></a>二. Hive数据导入到Mysql</h2><p>还是使用上面的<code>hive</code>表<code>web.people_access_log</code>,将其导入到<code>mysql</code>中的<code>people_access_log_out</code>表中.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop <span class="built_in">export</span> \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log_out \</span><br><span class="line">--input-fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--<span class="built_in">export</span>-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--num-mappers 1</span><br></pre></td></tr></table></figure></p>
+<h2 id="三-Hive数据导入到Mysql"><a href="#三-Hive数据导入到Mysql" class="headerlink" title="三. Hive数据导入到Mysql"></a>三. Hive数据导入到Mysql</h2><p>还是使用上面的<code>hive</code>表<code>web.people_access_log</code>,将其导入到<code>mysql</code>中的<code>people_access_log_out</code>表中.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sqoop <span class="built_in">export</span> \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log_out \</span><br><span class="line">--input-fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--<span class="built_in">export</span>-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--num-mappers 1</span><br></pre></td></tr></table></figure></p>
 <p>注意：<code>mysql</code>表<code>people_access_log_out</code>需要提前建好，否则报错：<code>ErrorException: Table &#39;test.people_access_log_out&#39; doesn&#39;t exist</code>。如果有<code>id</code>自增列，<code>hive</code>表也需要有，<code>hive</code>表与<code>mysql</code>表字段必须完全相同。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> people_access_log_out <span class="keyword">like</span> people_access_log;</span><br></pre></td></tr></table></figure></p>
 <p>执行完一个<code>mr</code>任务后，成功导入到<code>mysql</code>表<code>people_access_log_out</code>中.</p>
-<h2 id="三-mysql数据增量导入hive"><a href="#三-mysql数据增量导入hive" class="headerlink" title="三. mysql数据增量导入hive"></a>三. mysql数据增量导入hive</h2><p>实际中<code>mysql</code>数据会不断增加，这时候需要用<code>sqoop</code>将数据增量导入<code>hive</code>，然后进行海量数据分析统计。增量数据导入分两种，一是基于递增列的增量数据导入（<code>Append</code>方式）。二是基于时间列的增量数据导入（<code>LastModified</code>方式）。有几个核心参数：</p>
+<h2 id="四-mysql数据增量导入hive"><a href="#四-mysql数据增量导入hive" class="headerlink" title="四. mysql数据增量导入hive"></a>四. mysql数据增量导入hive</h2><p>实际中<code>mysql</code>数据会不断增加，这时候需要用<code>sqoop</code>将数据增量导入<code>hive</code>，然后进行海量数据分析统计。增量数据导入分两种，一是基于递增列的增量数据导入（<code>Append</code>方式）。二是基于时间列的增量数据导入（<code>LastModified</code>方式）。有几个核心参数：</p>
 <ul>
 <li><code>–check-column</code>:用来指定一些列，这些列在增量导入时用来检查这些数据是否作为增量数据进行导入，和关系型数据库中的自增字段及时间戳类似.<strong>注意</strong>:这些被指定的列的类型不能使任意字符类型，如char、varchar等类型都是不可以的，同时<code>–check-column</code>可以去指定多个列</li>
 <li><code>–incremental</code>:用来指定增量导入的模式，两种模式分别为<code>Append</code>和<code>Lastmodified</code></li>
@@ -368,8 +407,74 @@ var _hmt = _hmt || [];
 <p>这样<code>mysql</code>里面就会多了2条数据。此时<code>hive</code>里面只有<code>id</code>为<code>1 ~ 6</code>的数据，执行同步<code>job</code>使用以下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqoop job -<span class="built_in">exec</span> mysql2hive_job</span><br></pre></td></tr></table></figure></p>
 <p>执行完成后，发现刚才<code>mysql</code>新加入的<code>id</code>为<code>7 ~ 8</code>的两条数据已经同步到<code>hive</code>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	1577003281739	112.168.1.2	https://www.baidu.com</span><br><span class="line">2	15110101011	1577003281749	112.16.1.23	https://www.baidu.com</span><br><span class="line">3	15110101012	1577003281759	193.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	1577003281769	112.18.1.2	https://www.baidu.com</span><br><span class="line">5	15110101014	1577003281779	112.168.10.2	https://www.baidu.com</span><br><span class="line">6	15110101015	1577003281789	11.168.1.2	https://www.taobao.com</span><br><span class="line">7	15110101016	1577003281790	112.168.1.3	https://www.qq.com</span><br><span class="line">8	15110101017	1577003281791	112.1.1.3	https://www.microsoft.com</span><br></pre></td></tr></table></figure></p>
 <p>由于实际场景中，<code>mysql</code>表中的数据，比如订单表等，通常是一致有数据进入的，这时候只需要将<code>sqoop job -exec mysql2hive_job</code>这个命令定时(比如说10分钟频率)执行一次，就能将数据10分钟同步一次到<code>hive</code>数据仓库。</p>
-<h3 id="2-Lastmodified导入实战"><a href="#2-Lastmodified导入实战" class="headerlink" title="2. Lastmodified导入实战"></a>2. Lastmodified导入实战</h3><p><code>append</code>适合业务系统库，一般业务系统表会通过自增ID作为主键标识唯一性。<code>Lastmodified</code>适合ETL的数据根据时间戳字段导入，表示只导入比这个时间戳大，即比这个时间晚的数据。</p>
-<h4 id="1-新建一张表"><a href="#1-新建一张表" class="headerlink" title="1). 新建一张表"></a>1). 新建一张表</h4>
+<h3 id="2-Lastmodified-导入实战"><a href="#2-Lastmodified-导入实战" class="headerlink" title="2. Lastmodified 导入实战"></a>2. <code>Lastmodified</code> 导入实战</h3><p><code>append</code>适合业务系统库，一般业务系统表会通过自增ID作为主键标识唯一性。<code>Lastmodified</code>适合<code>ETL</code>的数据根据时间戳字段导入，表示只导入比这个时间戳大，即比这个时间晚的数据。</p>
+<h4 id="1-新建一张表"><a href="#1-新建一张表" class="headerlink" title="1). 新建一张表"></a>1). 新建一张表</h4><p>在<code>mysql</code>中新建一张表<code>people_access_log2</code>，并且初始化几条数据:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`people_access_log2`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT <span class="keyword">COMMENT</span> <span class="string">'id'</span>,</span><br><span class="line">  <span class="string">`user_id`</span> <span class="built_in">bigint</span>(<span class="number">20</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'用户id'</span>,</span><br><span class="line">  <span class="string">`access_time`</span> <span class="keyword">timestamp</span> <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CURRENT_TIMESTAMP</span>,</span><br><span class="line">  <span class="string">`ip`</span> <span class="built_in">varchar</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'访客ip'</span>,</span><br><span class="line">  <span class="string">`url`</span> <span class="built_in">varchar</span>(<span class="number">200</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_bin <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4;</span><br></pre></td></tr></table></figure></p>
+<p>插入数据:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">15110101010</span>,<span class="string">'112.168.1.200'</span>,<span class="string">'https://www.baidu.com'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">15110101011</span>,<span class="string">'112.16.1.2'</span>,<span class="string">'https://www.baidu.com'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">3</span>,<span class="number">15110101012</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.taobao.com'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">4</span>,<span class="number">15110101013</span>,<span class="string">'112.168.10.2'</span>,<span class="string">'https://www.baidu.com'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">5</span>,<span class="number">15110101014</span>,<span class="string">'112.168.1.2'</span>,<span class="string">'https://www.jd.com'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">6</span>,<span class="number">15110101015</span>,<span class="string">'112.168.12.4'</span>,<span class="string">'https://www.qq.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<p><code>mysql</code>里面的数据就是这样：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">user_id</th>
+<th style="text-align:center">access_time</th>
+<th style="text-align:center">ip</th>
+<th style="text-align:center">url</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>1</code></td>
+<td style="text-align:center"><code>15110101010</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:10</code></td>
+<td style="text-align:center"><code>112.168.1.200</code></td>
+<td style="text-align:center"><code>https://www.baidu.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>2</code></td>
+<td style="text-align:center"><code>15110101011</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:33</code></td>
+<td style="text-align:center"><code>112.16.1.2</code></td>
+<td style="text-align:center"><code>https://www.baidu.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>3</code></td>
+<td style="text-align:center"><code>15110101012</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:41</code></td>
+<td style="text-align:center"><code>112.168.1.2</code></td>
+<td style="text-align:center"><code>https://www.taobao.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>4</code></td>
+<td style="text-align:center"><code>15110101013</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:46</code></td>
+<td style="text-align:center"><code>112.168.10.2</code></td>
+<td style="text-align:center"><code>https://www.baidu.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>5</code></td>
+<td style="text-align:center"><code>15110101014</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:52</code></td>
+<td style="text-align:center"><code>112.168.1.2</code></td>
+<td style="text-align:center"><code>https://www.jd.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>6</code></td>
+<td style="text-align:center"><code>15110101015</code></td>
+<td style="text-align:center"><code>2019-12-28 16:23:56</code></td>
+<td style="text-align:center"><code>112.168.12.4</code></td>
+<td style="text-align:center"><code>https://www.qq.</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-初始化hive表"><a href="#2-初始化hive表" class="headerlink" title="2). 初始化hive表:"></a>2). 初始化<code>hive</code>表:</h4><p>初始化<code>hive</code>数据，将<code>mysql</code>里面的<code>6</code>条数据导入<code>hive</code>中，并且可以自动帮助我们创建对应<code>hive</code>表，何乐而不为，否则我们需要自己手动创建，完成初始化工作。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--create-hive-table \</span><br><span class="line">--fields-terminated-by <span class="string">','</span> \</span><br><span class="line">--hive-table web.people_access_log2</span><br></pre></td></tr></table></figure></p>
+<p>可以看到执行该命令后，启动了二一个<code>mapreduce</code>任务，这样6条数据就进入<code>hive</code>表<code>web.people_access_log2</code>了:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log2;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	2019-12-28 16:23:10.0	112.168.1.200	https://www.baidu.com</span><br><span class="line">2	15110101011	2019-12-28 16:23:33.0	112.16.1.2	https://www.baidu.com</span><br><span class="line">3	15110101012	2019-12-28 16:23:41.0	112.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	2019-12-28 16:23:46.0	112.168.10.2	https://www.baidu.com</span><br><span class="line">5	15110101014	2019-12-28 16:23:52.0	112.168.1.2	https://www.jd.com</span><br><span class="line">6	15110101015	2019-12-28 16:23:56.0	112.168.12.4	https://www.qq.com</span><br><span class="line">Time taken: 0.326 seconds, Fetched: 6 row(s)</span><br></pre></td></tr></table></figure></p>
+<p>我们再次插入一条数据进入<code>mysql</code>的<code>people_access_log2</code>表:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="string">'112.168.12.45'</span>,<span class="string">'https://www.qq.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>此时，<code>mysql</code>表里面已经有<code>7</code>条数据了，我们使用<code>incremental</code>的方式进行增量的导入到<code>hive</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--hive-table people_access_log2 \</span><br><span class="line">-m 1 \</span><br><span class="line">--check-column access_time \</span><br><span class="line">--incremental lastmodified \</span><br><span class="line">--last-value <span class="string">"2019-12-28 16:23:56"</span> \</span><br></pre></td></tr></table></figure></p>
+<p><code>2019-12-28 16:23:56</code>就是第6条数据的时间，这里需要指定。报错了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19/12/28 16:17:25 ERROR tool.ImportTool: Error during import: --merge-key or --append is required when using --incremental lastmodified and the output directory exists.</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：可以看到<code>--merge-key or --append is required when using --incremental lastmodified</code>意思是，这种基于时间导入模式，需要指定<code>--merge-key</code>或者<code>--append</code>参数，表示根据时间戳导入，数据是直接在末尾追加(append)还是合并(merge)，这里使用<code>merge</code>方式，根据<code>id</code>合并：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--hive-table web.people_access_log2 \</span><br><span class="line">--check-column access_time \</span><br><span class="line">--incremental lastmodified \</span><br><span class="line">--last-value <span class="string">"2019-12-28 16:23:56"</span> \</span><br><span class="line">--fields-terminated-by <span class="string">','</span> \</span><br><span class="line">--merge-key id</span><br></pre></td></tr></table></figure></p>
+<p>执行该命令后，与直接导入不同，该命令启动了2个<code>mapreduce</code>任务，这样就把数据增量<code>merge</code>导入<code>hive</code>表了.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log2 order by id;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	2019-12-28 16:23:10.0	112.168.1.200	https://www.baidu.com</span><br><span class="line">2	15110101011	2019-12-28 16:23:33.0	112.16.1.2	https://www.baidu.com</span><br><span class="line">3	15110101012	2019-12-28 16:23:41.0	112.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	2019-12-28 16:23:46.0	112.168.10.2	https://www.baidu.com</span><br><span class="line">5	15110101014	2019-12-28 16:23:52.0	112.168.1.2	https://www.jd.com</span><br><span class="line">6	15110101015	2019-12-28 16:23:56.0	112.168.12.4	https://www.qq.com</span><br><span class="line">6	15110101015	2019-12-28 16:23:56.0	112.168.12.4	https://www.qq.com</span><br><span class="line">7	15110101016	2019-12-28 16:28:24.0	112.168.12.45	https://www.qq.com</span><br><span class="line">Time taken: 0.241 seconds, Fetched: 8 row(s)</span><br></pre></td></tr></table></figure></p>
+<p>可以看到<code>id=6</code>的数据，有2条，它的时间刚好是<code>--last-value</code>指定的时间，则会导入<strong>大于等于</strong><code>--last-value</code>指定时间的数据，这点需要注意。</p>
+
       
 
       
@@ -383,6 +488,10 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sqoop</a>
         		</li>
       		
 		</ul>
@@ -1654,6 +1763,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">sqoop</a>
               </li>
             
             <div class="clearfix"></div>

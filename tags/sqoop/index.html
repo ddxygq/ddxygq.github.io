@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.ikeguang.com">
-  <title>第十五章-Python3中Web开发框架flask使用蓝图优化应用结构 | 柯广的博客</title>
+  <title>Tag: sqoop | 柯广的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="代码地址：https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter15-optimize/app  本文翻译自The Flask Mega-Tutorial Part XV: A Better Application Structure 这是Flask Mega-Tutorial系列的第十五部分，我将使">
-<meta name="keywords" content="Python,flask">
-<meta property="og:type" content="article">
-<meta property="og:title" content="第十五章-Python3中Web开发框架flask使用蓝图优化应用结构">
-<meta property="og:url" content="http://www.ikeguang.com/2019/10/22/flask-chapter15-optimize/index.html">
+  <meta name="description" content="柯广的博客">
+<meta name="keywords" content="柯广">
+<meta property="og:type" content="website">
+<meta property="og:title" content="柯广的博客">
+<meta property="og:url" content="http://www.ikeguang.com/tags/sqoop/index.html">
 <meta property="og:site_name" content="柯广的博客">
-<meta property="og:description" content="代码地址：https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter15-optimize/app  本文翻译自The Flask Mega-Tutorial Part XV: A Better Application Structure 这是Flask Mega-Tutorial系列的第十五部分，我将使">
+<meta property="og:description" content="柯广的博客">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg">
-<meta property="og:updated_time" content="2019-12-16T14:46:44.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第十五章-Python3中Web开发框架flask使用蓝图优化应用结构">
-<meta name="twitter:description" content="代码地址：https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter15-optimize/app  本文翻译自The Flask Mega-Tutorial Part XV: A Better Application Structure 这是Flask Mega-Tutorial系列的第十五部分，我将使">
-<meta name="twitter:image" content="http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg">
+<meta name="twitter:title" content="柯广的博客">
+<meta name="twitter:description" content="柯广的博客">
   
   
     <link rel="icon" href="/image/site-config-img/favicon.ico">
@@ -212,354 +209,77 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-flask-chapter15-optimize" class="article article-type-post " itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      第十五章-Python3中Web开发框架flask使用蓝图优化应用结构
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/12/20/sqoop-usage/" class="archive-article-date">
+  	<time datetime="2019-12-20T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/12/20/sqoop-usage/">sqoop用法</a>
     </h1>
   
 
-        
-        <a href="/2019/10/22/flask-chapter15-optimize/" class="archive-article-date">
-  	<time datetime="2019-10-22T12:59:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>代码地址</strong>：<a href="https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter15-optimize/app" target="_blank" rel="noopener">https://github.com/ddxygq/PyCode/tree/master/web/flask/mega_tutorial/chapter15-optimize/app</a></p>
-<hr>
-<p>本文翻译自<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xv-a-better-application-structure" target="_blank" rel="noopener">The Flask Mega-Tutorial Part XV: A Better Application Structure</a></p>
-<p>这是<code>Flask Mega-Tutorial</code>系列的第十五部分，我将使用适用于大型应用的风格重构本应用。</p>
-<p><code>Microblog</code>已经是一个初具规模的应用了，所以我认为这是讨论<code>Flask</code>应用如何在持续增长中不会变得混乱和难以管理的好时机。 Flask是一个框架，旨在让你选择以任何方式来组织项目，基于该理念，在应用日益庞大或者技能水平变化的时候，才有可能更改和调整其结构。</p>
-<p>在本章中，我将讨论适用于大型应用的一些模式，并且为了演示他们，我将对Microblog项目的结构进行一些更改，目标是使代码更易于维护和组织。 当然，在真正的Flask精神中，我鼓励你在尝试决定组织自己的项目的方式时仅仅将这些更改作为参考。</p>
-<p><em>本章的<code>GitHub</code>链接为：<a href="https://github.com/miguelgrinberg/microblog/tree/v0.15" target="_blank" rel="noopener">Browse</a>, <a href="https://github.com/miguelgrinberg/microblog/archive/v0.15.zip" target="_blank" rel="noopener">Zip</a>, <a href="https://github.com/miguelgrinberg/microblog/compare/v0.14...v0.15" target="_blank" rel="noopener">Diff</a>.</em></p>
-<a id="more"></a>
-<h2 id="目前的局限性"><a href="#目前的局限性" class="headerlink" title="目前的局限性"></a>目前的局限性</h2><p>目前状态下的应用有两个基本问题。 如果你观察应用的组织方式，你会注意到有几个不同的子系统可以被识别，但支持它们的代码都混合在了一起，没有任何明确的界限。 我们来回顾一下这些子系统是什么：</p>
-<ul>
-<li>用户认证子系统，包括<em>app/routes.py</em>中的一些视图函数，<em>app/forms.py</em>中的一些表单，<em>app/templates</em>中的一些模板以及<em>app/email.py</em>中的电子邮件支持。</li>
-<li>错误子系统，它在<em>app/errors.py</em>中定义了错误处理程序并在<em>app/templates</em>中定义了模板。</li>
-<li>核心应用功能，包括显示和撰写用户动态，用户个人主页和关注以及用户动态的实时翻译，这些功能遍布大多数应用模块和模板。</li>
-</ul>
-<p>思考这三个子系统以及它们组织的方式，你可能会注意到这样一个模式。 到目前为止，我一直遵循的组织逻辑是不同的应用功能归属到其专属的模块。 这些模块之中，一个用于视图函数，一个用于Web表单，一个用于错误，一个用于电子邮件，一个目录用于存放HTML模板等等。 虽然这是一个对小项目有意义的组织结构，但是一旦项目开始增长，它往往会使其中的一些模块变得非常大而且杂乱无章。</p>
-<p>要想清晰地看到问题的一种方法，是思考如何通过尽可能多地重复使用这一项目来开始第二个项目。 例如，用户身份验证部分应该在其他应用中也能运行良好，但如果你想按原样使用该代码，则必须进入多个模块并将相关部分复制/粘贴到新项目的新文件中。 看到这是多么不方便了吗？ 如果这个项目将所有与认证相关的文件从应用的其余部分中分离出来，会不会更好？ Flask的<em>blueprints</em>功能有助于实现更实用的组织结构，从而更轻松地重用代码。</p>
-<p>还有第二个问题，虽然它不太明显。 Flask应用实例在<code>app/__init__.py</code>中被创建为一个全局变量，然后又被很多应用模块导入。 虽然这本身并不是问题，但将应用实例作为全局变量可能会使某些情况复杂化，特别是与测试相关的情景。 想象一下你想要在不同的配置下测试这个应用。 由于应用被定义为全局变量，实际上没有办法使用不同配置变量来实例化的两个应用实例。 另一种糟心的情况是，所有测试都使用相同的应用，因此测试可能会对应用进行更改，就会影响稍后运行的其他测试。 理想情况下，你希望所有测试都在原始应用实例上运行的。</p>
-<p>你可以在<em>tests.py</em>模块中看到我正在使用的应用实例化之后修改配置的技巧，以指示测试时使用内存数据库而不是默认的SQLite数据库。我真的没有其他办法来更改已配置的数据库，因为在测试开始时已经创建和配置了应用。 对于这种特殊情况，对已配置的应用实例修改配置似乎可以运行，但在其他情况下可能不会，并且在任何情况下，这是一种不推荐的做法，因为这么做可能会导致提示晦涩并且难以找到BUG。</p>
-<p>更好的解决方案是不将应用设置为全局变量，而是使用<em>应用工厂</em>函数在运行时创建它。 这将是一个接受配置对象作为参数的函数，并返回一个配置完毕的Flask应用实例。 如果我能够通过应用工厂函数来修改应用，那么编写需要特殊配置的测试会变得很容易，因为每个测试都可以创建它各自的应用。</p>
-<p>在本章中，我将通过为上面提到的三个子系统重构应用来介绍blueprints。 展示更改的详细列表有些不切实际，因为几乎应用中每个文件都有少许变化，所以我将讨论重构的步骤，然后你可以<a href="https://github.com/miguelgrinberg/microblog/archive/v0.15.zip" target="_blank" rel="noopener">下载</a>更改后的应用。</p>
-<h2 id="Blueprints"><a href="#Blueprints" class="headerlink" title="Blueprints"></a>Blueprints</h2><p>在Flask中，blueprint是代表应用子集的逻辑结构。 blueprint可以包括路由，视图函数，表单，模板和静态文件等元素。 如果在单独的Python包中编写blueprint，那么你将拥有一个封装了应用特定功能的组件。</p>
-<p>Blueprint的内容最初处于休眠状态。 为了关联这些元素，blueprint需要在应用中注册。 在注册过程中，需要将添加到blueprint中的所有元素传递给应用。 因此，你可以将blueprint视为应用功能的临时存储，以帮助组织代码。</p>
-<h3 id="错误处理Blueprint"><a href="#错误处理Blueprint" class="headerlink" title="错误处理Blueprint"></a>错误处理Blueprint</h3><p>我创建的第一个blueprint用于封装对错误处理程序的支持。 该blueprint的结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app/</span><br><span class="line">    errors/                             &lt;-- blueprint package</span><br><span class="line">        __init__.py                     &lt;-- blueprint creation</span><br><span class="line">        handlers.py                     &lt;-- error handlers</span><br><span class="line">    templates/</span><br><span class="line">        errors/                         &lt;-- error templates</span><br><span class="line">            404.html</span><br><span class="line">            500.html</span><br><span class="line">    __init__.py                         &lt;-- blueprint registration</span><br></pre></td></tr></table></figure>
-<p>实质上，我所做的是将<em>app/errors.py</em>模块移动到<em>app/errors/handlers.py</em>中，并将两个错误模板移动到<em>app/templates/errors</em>中，以便将它们与其他模板分开。 我还必须在两个错误处理程序中更改<code>render_template()</code>调用以使用新的<em>errors</em>模板子目录。 之后，我将blueprint创建添加到<code>app/errors/__init__.py</code>模块，并在创建应用实例之后，将blueprint注册到<code>app/__init__.py</code>。</p>
-<p>我必须提一下，Flask blueprints可以为自己的模板和静态文件配置单独的目录。 我已决定将模板移动到应用模板目录的子目录中，以便所有模板都位于一个层次结构中，但是如果你希望在blueprint中包含属于自己的模板，这也是支持的。 例如，如果向<code>Blueprint()</code>构造函数添加<code>template_folder=&#39;templates&#39;</code>参数，则可以将错误blueprint的模板存储在<em>app/errors/templates</em>目录中。</p>
-<p>创建blueprint与创建应用非常相似。 这是在blueprint的<code>___init__.py</code>模块中完成的：</p>
-<p><code>app/errors/__init__.py</code>：错误blueprint。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Blueprint</span><br><span class="line"></span><br><span class="line">bp = Blueprint(<span class="string">'errors'</span>, __name__)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.errors <span class="keyword">import</span> handlers</span><br></pre></td></tr></table></figure>
-<p><code>Blueprint</code>类获取blueprint的名称，基础模块的名称（通常在Flask应用实例中设置为<code>__name__</code>）以及一些可选参数（在这种情况下我不需要这些参数）。 Blueprint对象创建后，我导入了<em>handlers.py</em>模块，以便其中的错误处理程序在blueprint中注册。 该导入位于底部以避免循环依赖。</p>
-<p>在<em>handlers.py</em>模块中，我放弃使用<a href="mailto:`@app.errorhandler" target="_blank" rel="noopener">`@app.errorhandler</a><code>装饰器将错误处理程序附加到应用程序，而是使用blueprint的</code>@bp.app_errorhandler`装饰器。 尽管两个装饰器最终都达到了相同的结果，但这样做的目的是试图使blueprint独立于应用，使其更具可移植性。我还需要修改两个错误模板的路径，因为它们被移动到了新<em>errors</em>子目录。</p>
-<p>完成错误处理程序重构的最后一步是向应用注册blueprint：</p>
-<p><code>app/__init__.py</code>：向应用注册错误blueprint。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.errors <span class="keyword">import</span> bp <span class="keyword">as</span> errors_bp</span><br><span class="line">app.register_blueprint(errors_bp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> routes, models  <span class="comment"># &lt;-- remove errors from this import!</span></span><br></pre></td></tr></table></figure>
-<p>为了注册blueprint，将使用Flask应用实例的<code>register_blueprint()</code>方法。 在注册blueprint时，任何视图函数，模板，静态文件，错误处理程序等均连接到应用。 我将blueprint的导入放在<code>app.register_blueprint()</code>的上方，以避免循环依赖。</p>
-<h3 id="用户认证Blueprint"><a href="#用户认证Blueprint" class="headerlink" title="用户认证Blueprint"></a>用户认证Blueprint</h3><p>将应用的认证功能重构为blueprint的过程与错误处理程序的过程非常相似。 以下是重构为blueprint的目录层次结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app/</span><br><span class="line">    auth/                               &lt;-- blueprint package</span><br><span class="line">        __init__.py                     &lt;-- blueprint creation</span><br><span class="line">        email.py                        &lt;-- authentication emails</span><br><span class="line">        forms.py                        &lt;-- authentication forms</span><br><span class="line">        routes.py                       &lt;-- authentication routes</span><br><span class="line">    templates/</span><br><span class="line">        auth/                           &lt;-- blueprint templates</span><br><span class="line">            login.html</span><br><span class="line">            register.html</span><br><span class="line">            reset_password_request.html</span><br><span class="line">            reset_password.html</span><br><span class="line">    __init__.py                         &lt;-- blueprint registration</span><br></pre></td></tr></table></figure>
-<p>为了创建这个blueprint，我必须将所有认证相关的功能移到为blueprint创建的新模块中。 这包括一些视图函数，Web表单和支持功能，例如通过电子邮件发送密码重设token的功能。 我还将模板移动到一个子目录中，以将它们与应用的其余部分分开，就像我对错误页面所做的那样。</p>
-<p>在blueprint中定义路由时，使用<a href="mailto:`@bp.route" target="_blank" rel="noopener">`@bp.route</a><code>装饰器来代替</code>@app.route<code>装饰器。 在</code>url_for()<code>中用于构建URL的语法也需要进行更改。 对于直接附加到应用的常规视图函数，</code>url_for()<code>的第一个参数是视图函数名称。 但当在blueprint中定义路由时，该参数必须包含blueprint名称和视图函数名称，并以句点分隔。 因此，我不得不用诸如</code>url_for(‘auth.login’)<code>的代码替换所有出现的</code>url_for(‘login’)`代码，对于其余的视图函数也是如此。</p>
-<p>注册<code>auth</code> blueprint到应用时，我使用了些许不同的格式：</p>
-<p><code>app/__init__.py</code>：注册用户认证blueprint到应用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line"><span class="keyword">from</span> app.auth <span class="keyword">import</span> bp <span class="keyword">as</span> auth_bp</span><br><span class="line">app.register_blueprint(auth_bp, url_prefix=<span class="string">'/auth'</span>)</span><br><span class="line"><span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
-<p>在这种情况下，<code>register_blueprint()</code>调用接收了一个额外的参数，<code>url_prefix</code>。 这完全是可选的，Flask提供了给blueprint的路由添加URL前缀的选项，因此blueprint中定义的任何路由都会在其完整URL中获取此前缀。 在许多情况下，这可以用来当成“命名空间”，它可以将blueprint中的所有路由与应用或其他blueprint中的其他路由分开。 对于用户认证，我认为让所有路由以 <em>/auth</em> 开头很不错，所以我添加了该前缀。 所以现在登录URL将会是  <em><a href="http://localhost:5000/auth/login" target="_blank" rel="noopener">http://localhost:5000/auth/login</a></em> 。 因为我使用<code>url_for()</code>来生成URL，所有URL都会自动合并前缀。</p>
-<h3 id="主应用Blueprint"><a href="#主应用Blueprint" class="headerlink" title="主应用Blueprint"></a>主应用Blueprint</h3><p>第三个blueprint包含核心应用逻辑。 重构这个blueprint和前两个blueprint的过程一样。 我给这个blueprint命名为<code>main</code>，因此所有引用视图函数的<code>url_for()</code>调用都必须添加一个<code>main.</code>前缀。 鉴于这是应用的核心功能，我决定将模板留在原来的位置。 这不会有什么问题，因为我已将其他两个blueprint中的模板移动到子目录中了。</p>
-<h2 id="应用工厂模式"><a href="#应用工厂模式" class="headerlink" title="应用工厂模式"></a>应用工厂模式</h2><p>正如我在本章的介绍中所提到的，将应用设置为全局变量会引入一些复杂性，主要是以某些测试场景的局限性为形式。 在我介绍blueprint之前，应用必须是一个全局变量，因为所有的视图函数和错误处理程序都需要使用来自<code>app</code>的装饰器来修饰，比如<a href="mailto:`@app.route" target="_blank" rel="noopener">`@app.route</a>`。 但是现在所有的路由和错误处理程序都被转移到了blueprint中，因此保持应用全局性的理由就不够充分了。</p>
-<p>所以我要做的是添加一个名为<code>create_app()</code>的函数来构造一个Flask应用实例，并消除全局变量。 转换并非容易，我不得不理清一些复杂的东西，但我们先来看看应用工厂函数：</p>
-<p><code>app/__init__.py</code>：应用工厂函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ...</span></span><br><span class="line">db = SQLAlchemy()</span><br><span class="line">migrate = Migrate()</span><br><span class="line">login = LoginManager()</span><br><span class="line">login.login_view = <span class="string">'auth.login'</span></span><br><span class="line">login.login_message = _l(<span class="string">'Please log in to access this page.'</span>)</span><br><span class="line">mail = Mail()</span><br><span class="line">bootstrap = Bootstrap()</span><br><span class="line">moment = Moment()</span><br><span class="line">babel = Babel()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_app</span><span class="params">(config_class=Config)</span>:</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(config_class)</span><br><span class="line"></span><br><span class="line">    db.init_app(app)</span><br><span class="line">    migrate.init_app(app, db)</span><br><span class="line">    login.init_app(app)</span><br><span class="line">    mail.init_app(app)</span><br><span class="line">    bootstrap.init_app(app)</span><br><span class="line">    moment.init_app(app)</span><br><span class="line">    babel.init_app(app)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ... no changes to blueprint registration</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> app.debug <span class="keyword">and</span> <span class="keyword">not</span> app.testing:</span><br><span class="line">        <span class="comment"># ... no changes to logging setup</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
-<p>你已经看到，大多数Flask插件都是通过创建插件实例并将应用作为参数传递来初始化的。 当应用不再作为全局变量时，有一种替代模式，插件分成两个阶段进行初始化。 插件实例首先像前面一样在全局范围内创建，但没有参数传递给它。 这会创建一个未附加到应用的插件实例。 当应用实例在工厂函数中创建时，必须在插件实例上调用<code>init_app()</code>方法，以将其绑定到现在已知的应用。</p>
-<p>在初始化期间执行的其他任务保持不变，但会被移到工厂函数而不是在全局范围内。 这包括blueprint和日志配置的注册。 请注意，我在条件中添加了一个<code>not app.testing</code>子句，用于决定是否启用电子邮件和文件日志，以便在单元测试期间跳过所有这些日志记录。 由于在配置中<code>TESTING</code>变量在单元测试时会被设置为<code>True</code>，因此<code>app.testing</code>标志在运行单元测试时将变为<code>True</code>。</p>
-<p>那么谁来调用应用程工厂函数呢？ 最明显使用此函数的地方是处于顶级目录的<em>microblog.py</em>脚本，它是唯一会将应用设置为全局变量的模块。 另一个调用该工厂函数的地方是<em>tests.py</em>，我将在下一节中更详细地讨论单元测试。</p>
-<p>正如我上面提到的，大多数对<code>app</code>的引用都是随着blueprint的引入而消失的，但是我仍然需要解决代码中的一些问题。 例如，<em>app/models.py</em>、<em>app/translate.py</em>和<em>app/main/routes.py</em>模块都引用了<code>app.config</code>。 幸运的是，Flask开发人员试图使视图函数很容易地访问应用实例，而不必像我一直在做的那样导入它。 Flask提供的<code>current_app</code>变量是一个特殊的“上下文”变量，Flask在分派请求之前使用应用初始化该变量。 你之前已经看到另一个上下文变量，即存储当前语言环境的<code>g</code>变量。 这两个变量，以及Flask-Login的<code>current_user</code>和其他一些你还没有看到的东西，是“魔法”变量，因为它们像全局变量一样工作，但只能在处理请求期间且在处理它的线程中访问。</p>
-<p>用Flask的<code>current_app</code>变量替换<code>app</code>就不需要将应用实例作为全局变量导入。 通过简单的搜索和替换，我可以毫无困难地用<code>current_app.config</code>替换对<code>app.config</code>的所有引用。</p>
-<p><em>app/email.py</em>模块提出了一个更大的挑战，所以我必须使用一个小技巧：</p>
-<p><em>app/email.py</em>：将应用实例传递给另一个线程。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> current_app</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_async_email</span><span class="params">(app, msg)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> app.app_context():</span><br><span class="line">        mail.send(msg)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_email</span><span class="params">(subject, sender, recipients, text_body, html_body)</span>:</span></span><br><span class="line">    msg = Message(subject, sender=sender, recipients=recipients)</span><br><span class="line">    msg.body = text_body</span><br><span class="line">    msg.html = html_body</span><br><span class="line">    Thread(target=send_async_email,</span><br><span class="line">           args=(current_app._get_current_object(), msg)).start()</span><br></pre></td></tr></table></figure>
-<p>在<code>send_email()</code>函数中，应用实例作为参数传递给后台线程，后台线程将发送电子邮件而不阻塞主应用程序。在作为后台线程运行的<code>send_async_email()</code>函数中直接使用<code>current_app</code>将不会奏效，因为<code>current_app</code>是一个与处理客户端请求的线程绑定的上下文感知变量。在另一个线程中，<code>current_app</code>没有赋值。直接将<code>current_app</code>作为参数传递给线程对象也不会有效，因为<code>current_app</code>实际上是一个<em>代理对象</em>，它被动态地映射到应用实例。因此，传递代理对象与直接在线程中使用<code>current_app</code>相同。我需要做的是访问存储在代理对象中的实际应用程序实例，并将其作为<code>app</code>参数传递。 <code>current_app._get_current_object()</code>表达式从代理对象中提取实际的应用实例，所以它就是我作为参数传递给线程的。</p>
-<p>另一个棘手的模块是<em>app/cli.py</em>，它实现了一些用于管理语言翻译的快捷命令。 在这种情况下，<code>current_app</code>变量不起作用，因为这些命令是在启动时注册的，而不是在处理请求期间（这是唯一可以使用<code>current_app</code>的时间段）注册的。 为了在这个模块中删除对<code>app</code>的引用，我使用了另一个技巧，将这些自定义命令移动到一个将<code>app</code>实例作为参数的<code>register()</code>函数中：</p>
-<p><em>app/cli.py</em>：注册自定义应用命令。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> click</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(app)</span>:</span></span><br><span class="line"><span class="meta">    @app.cli.group()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">translate</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="string">"""Translation and localization commands."""</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @translate.command()</span></span><br><span class="line"><span class="meta">    @click.argument('lang')</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(lang)</span>:</span></span><br><span class="line">        <span class="string">"""Initialize a new language."""</span></span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @translate.command()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="string">"""Update all languages."""</span></span><br><span class="line">        <span class="comment"># ...</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @translate.command()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compile</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="string">"""Compile all languages."""</span></span><br><span class="line">        <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
-<p>然后我从<em>microblog.py</em>中调用这个<code>register()</code>函数。 以下是完成重构后的<em>microblog.py</em>：</p>
-<p><em>microblog.py</em>：重构后的主应用模块。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app <span class="keyword">import</span> create_app, db, cli</span><br><span class="line"><span class="keyword">from</span> app.models <span class="keyword">import</span> User, Post</span><br><span class="line"></span><br><span class="line">app = create_app()</span><br><span class="line">cli.register(app)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.shell_context_processor</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_shell_context</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'db'</span>: db, <span class="string">'User'</span>: User, <span class="string">'Post'</span> :Post&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="单元测试的改进"><a href="#单元测试的改进" class="headerlink" title="单元测试的改进"></a>单元测试的改进</h2><p>正如我在本章开头所暗示的，到目前为止，我所做的很多工作都是为了改进单元测试工作流程。 在运行单元测试时，要确保应用的配置方式不会污染开发资源（如数据库）。</p>
-<p><em>tests.py</em>的当前版本采用了应用实例化之后修改配置的技巧，这是一种危险的做法，因为并不是所有类型的更改都会在修改之后才生效。 我想要的是有机会在添加到应用之前指定我想要的测试配置项。</p>
-<p><code>create_app()</code>函数现在接受一个配置类作为参数。 默认情况下，使用在<em>config.py</em>中定义的<code>Config</code>类，但现在我可以通过将新类传递给工厂函数来创建使用不同配置的应用实例。 下面是一个适用于我的单元测试的示例配置类：</p>
-<p><em>tests.py</em>：测试配置。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> config <span class="keyword">import</span> Config</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    TESTING = <span class="keyword">True</span></span><br><span class="line">    SQLALCHEMY_DATABASE_URI = <span class="string">'sqlite://'</span></span><br></pre></td></tr></table></figure>
-<p>我在这里做的是创建应用的<code>Config</code>类的子类，并覆盖SQLAlchemy配置以使用内存SQLite数据库。 我还添加了一个<code>TESTING</code>属性，并设置为<code>True</code>，我目前不需要该属性，但如果应用需要确定它是否在单元测试下运行，它就派上用场了。</p>
-<p>你一定还记得，我的单元测试依赖于<code>setUp()</code>和<code>tearDown()</code>方法，它们由单元测试框架自动调用，以创建和销毁每次测试运行的环境。 我现在可以使用这两种方法为每个测试创建和销毁一个测试专用的应用：</p>
-<p><em>tests.py</em>：为每次测试创建一个应用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserModelCase</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.app = create_app(TestConfig)</span><br><span class="line">        self.app_context = self.app.app_context()</span><br><span class="line">        self.app_context.push()</span><br><span class="line">        db.create_all()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></span><br><span class="line">        db.session.remove()</span><br><span class="line">        db.drop_all()</span><br><span class="line">        self.app_context.pop()</span><br></pre></td></tr></table></figure>
-<p>新的应用将存储在<code>self.app</code>中，但光是创建一个应用不足以使所有的工作都成功。 思考创建数据库表的<code>db.create_all()</code>语句。 <code>db</code>实例需要注册到应用实例，因为它需要从<code>app.config</code>获取数据库URI，但是当你使用应用工厂时，应用就不止一个了。 那么<code>db</code>如何关联到我刚刚创建的<code>self.app</code>实例呢？</p>
-<p>答案在<em>application context</em>中。 还记得<code>current_app</code>变量吗？当不存在全局应用实例导入时，该变量以代理的形式来引用应用实例。 这个变量在当前线程中查找活跃的应用上下文，如果找到了，它会从中获取应用实例。 如果没有上下文，那么就没有办法知道哪个应用实例处于活跃状态，所以<code>current_app</code>就会引发一个异常。 下面你可以看到它是如何在Python控制台中工作的。 这需要通过运行<code>python</code>启动，因为<code>flask shell</code>命令会自动激活应用程序上下文以方便使用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> flask <span class="keyword">import</span> current_app</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>current_app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>]</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">    ...</span><br><span class="line">RuntimeError: Working outside of application context.</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> app <span class="keyword">import</span> create_app</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>app = create_app()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>app.app_context().push()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>current_app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>]</span><br><span class="line"><span class="string">'sqlite:////home/miguel/microblog/app.db'</span></span><br></pre></td></tr></table></figure>
-<p>这就是秘密所在！ 在调用你的视图函数之前，Flask推送一个应用上下文，它会使<code>current_app</code>和<code>g</code>生效。 当请求完成时，上下文将与这些变量一起被删除。 为了使<code>db.create_all()</code>调用在单元测试<code>setUp()</code>方法中工作，我为刚刚创建的应用程序实例推送了一个应用上下文，这样<code>db.create_all()</code>可以使用 <code>current_app.config</code>知道数据库在哪里。 然后在<code>tearDown()</code>方法中，我弹出上下文以将所有内容重置为干净状态。</p>
-<p>你还应该知道，应用上下文是Flask使用的两种上下文之一，还有一个<em>请求上下文</em>，它更具体，因为它适用于请求。 在处理请求之前激活请求上下文时，Flask的<code>request</code>、<code>session</code>以及Flask-Login的<code>current_user</code>变量才会变成可用状态。</p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>正如构建此应用时你所看到的，在启动服务器之前，有许多配置选项取决于在环境中设置的变量。 这包括密钥、电子邮件服务器信息、数据库URL和Microsoft Translator API key。 你可能会和我一样觉得，这很不方便，因为每次打开新的终端会话时，都需要重新设置这些变量。</p>
-<blockquote>
-<p>译者注：可以通过将环境变量设置到开机启动中，来保持它们在该计算机中的所有终端中都生效。</p>
-</blockquote>
-<p>应用依赖大量环境变量的常见处理模式是将这些变量存储在应用根目录中的 <em>.env</em> 文件中。 应用在启动时会从此文件中导入变量，这样就不需要你手动设置这些变量了。</p>
-<p>有一个支持 <em>.env</em> 文件的Python包，名为<code>python-dotenv</code>。 所以让我们安装这个包：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install python-dotenv</span><br></pre></td></tr></table></figure>
-<p>由于<em>config.py</em>模块是我读取所有环境变量的地方，因此我将在创建Config类之前导入 <em>.env</em> 文件，以便在构造类时设置变量：</p>
-<p><em>config.py</em>：导入 <em>.env</em> 文件中的环境变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"></span><br><span class="line">basedir = os.path.abspath(os.path.dirname(__file__))</span><br><span class="line">load_dotenv(os.path.join(basedir, <span class="string">'.env'</span>))</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
-<p>现在你可以创建一个 <em>.env</em> 文件并在其中写入应用所需的所有环境变量了。不要将 <em>.env</em> 文件加入到源代码版本控制中，这非常重要。否则，一旦你的密码和其他重要信息上传到远程代码库中后，你就会后悔莫及。</p>
-<p><em>.env</em>文件可以用于所有配置变量，但是不能用于Flask命令行的<code>FLASK_APP</code>和<code>FLASK_DEBUG</code>环境变量，因为它们在应用启动的早期（应用实例和配置对象存在之前）就被使用了。</p>
-<p>以下示例显示了 <em>.env</em> 文件，该文件定义了一个安全密钥，将电子邮件配置为在本地运行的邮件服务器的25端口上，并且不进行身份验证，设置Microsoft Translator API key，使用数据库配置的默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SECRET_KEY=a-really-long-and-unique-key-that-nobody-knows</span><br><span class="line">MAIL_SERVER=localhost</span><br><span class="line">MAIL_PORT=25</span><br><span class="line">MS_TRANSLATOR_KEY=&lt;your-translator-key-here&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="依赖文件"><a href="#依赖文件" class="headerlink" title="依赖文件"></a>依赖文件</h2><p>此时我已经在Python虚拟环境中安装了一定数量的软件包。 如果你需要在另一台机器上重新生成你的环境，将无法记住你必须安装哪些软件包，所以一般公认的做法是在项目的根目录中写一个<em>requirements.txt</em>文件，列出所有依赖的包及其版本。 生成这个列表实际上很简单：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
-<p><code>pip freeze</code>命令将安装在虚拟环境中的所有软件包以正确的格式输入到<em>requirements.txt</em>文件中。 现在，如果你需要在另一台计算机上创建相同的虚拟环境，无需逐个安装软件包，可以直接运行一条命令实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg" alt=""></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>你的赞赏是我不屑的动力！<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/image/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/image/weChatPay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-        <!-- 
-        <div style="color:#666">
-          <span id="busuanzi_container_page_pv">
-            本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-          </span>
-        </div>
-        -->
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">flask</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sqoop</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="/image/微信.jpg" alt="微信分享二维码" width="215px">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/10/22/flask-chapter16-search/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          第十六章-Python3中Web开发框架flask使用elasticsearch实现搜索功能
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/10/21/flask-chapter13-language/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">第十三章-Python3中Web开发框架flask文字翻译</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目前的局限性"><span class="toc-number">1.</span> <span class="toc-text">目前的局限性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blueprints"><span class="toc-number">2.</span> <span class="toc-text">Blueprints</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误处理Blueprint"><span class="toc-number">2.1.</span> <span class="toc-text">错误处理Blueprint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户认证Blueprint"><span class="toc-number">2.2.</span> <span class="toc-text">用户认证Blueprint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主应用Blueprint"><span class="toc-number">2.3.</span> <span class="toc-text">主应用Blueprint</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用工厂模式"><span class="toc-number">3.</span> <span class="toc-text">应用工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试的改进"><span class="toc-number">4.</span> <span class="toc-text">单元测试的改进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量"><span class="toc-number">5.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖文件"><span class="toc-number">6.</span> <span class="toc-text">依赖文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微信公众号"><span class="toc-number">7.</span> <span class="toc-text">微信公众号</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-  
-
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-3550377699413798" data-ad-slot="8063499417"></ins>
-     <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="/css/gitment.css">
-<script src="/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "Tue Oct 22 2019 20:59:59 GMT+0800",
-  owner: 'ddxygq',
-  repo: 'ddxygq.github.io',
-  oauth: {
-    client_id: 'c40772ee5582963d90df',
-    client_secret: 'e4927d60b7d03439a5dab4858239c26643fe03e9',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
           </div>
         </div>
       </div>
@@ -587,9 +307,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
