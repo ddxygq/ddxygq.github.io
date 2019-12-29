@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.ikeguang.com">
-  <title>sqoop用法 | 柯广的博客</title>
+  <title>sqoop用法之mysql与hive数据导入导出 | 柯广的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  基于递增列Append导入    1). 创建hive表    2). 创建job    3) 执行job    Lastmodified 导入实战    1). 新建一张表    2). 初始化hive表:    一. Sqoop介绍Sqoop是一个">
+  <meta name="description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  1 基于递增列Append导入     1). 创建hive表       2). 创建job       3) 执行job      2 Lastmodified 导入实战     1). 新建一张表       2). 初始化hive表:">
 <meta name="keywords" content="bigdata,sqoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqoop用法">
+<meta property="og:title" content="sqoop用法之mysql与hive数据导入导出">
 <meta property="og:url" content="http://www.ikeguang.com/2019/12/20/sqoop-usage/index.html">
 <meta property="og:site_name" content="柯广的博客">
-<meta property="og:description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  基于递增列Append导入    1). 创建hive表    2). 创建job    3) 执行job    Lastmodified 导入实战    1). 新建一张表    2). 初始化hive表:    一. Sqoop介绍Sqoop是一个">
+<meta property="og:description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  1 基于递增列Append导入     1). 创建hive表       2). 创建job       3) 执行job      2 Lastmodified 导入实战     1). 新建一张表       2). 初始化hive表:">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://qiniu.ikeguang.com/ikeguang.com/image/sqoop0.jfif">
-<meta property="og:updated_time" content="2019-12-28T08:45:50.433Z">
+<meta property="og:updated_time" content="2019-12-29T07:13:24.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sqoop用法">
-<meta name="twitter:description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  基于递增列Append导入    1). 创建hive表    2). 创建job    3) 执行job    Lastmodified 导入实战    1). 新建一张表    2). 初始化hive表:    一. Sqoop介绍Sqoop是一个">
+<meta name="twitter:title" content="sqoop用法之mysql与hive数据导入导出">
+<meta name="twitter:description" content="本文目录 一. Sqoop介绍 二. Mysql 数据导入到 Hive 三. Hive数据导入到Mysql 四. mysql数据增量导入hive  1 基于递增列Append导入     1). 创建hive表       2). 创建job       3) 执行job      2 Lastmodified 导入实战     1). 新建一张表       2). 初始化hive表:">
 <meta name="twitter:image" content="http://qiniu.ikeguang.com/ikeguang.com/image/sqoop0.jfif">
   
   
@@ -97,9 +97,11 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="http://birdsoaring.com:8081/">飞鸟团队</a></li>
 	        
-				<li><a href="/share">资源分享</a></li>
+				<li><a href="/categories/大数据">大数据</a></li>
 	        
 				<li><a href="/categories/Python博文">Python博文</a></li>
+	        
+				<li><a href="/share">资源分享</a></li>
 	        
 				<li><a href="/friends">友情链接</a></li>
 	        
@@ -167,6 +169,8 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -189,15 +193,17 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/archives">所有文章</a></li>
+					<li style="width: 16.666666666666668%"><a href="/archives">所有文章</a></li>
 		        
-					<li style="width: 20%"><a href="http://birdsoaring.com:8081/">飞鸟团队</a></li>
+					<li style="width: 16.666666666666668%"><a href="http://birdsoaring.com:8081/">飞鸟团队</a></li>
 		        
-					<li style="width: 20%"><a href="/share">资源分享</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/大数据">大数据</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/Python博文">Python博文</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/Python博文">Python博文</a></li>
 		        
-					<li style="width: 20%"><a href="/friends">友情链接</a></li>
+					<li style="width: 16.666666666666668%"><a href="/share">资源分享</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/friends">友情链接</a></li>
 		        
 				</ul>
 			</nav>
@@ -219,7 +225,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      sqoop用法
+      sqoop用法之mysql与hive数据导入导出
     </h1>
   
 
@@ -234,36 +240,51 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="本文目录"><a href="#本文目录" class="headerlink" title="本文目录"></a>本文目录</h2><ul>
-<li>一. Sqoop介绍</li>
-<li>二. Mysql 数据导入到 Hive</li>
-<li>三. Hive数据导入到Mysql</li>
-<li>四. mysql数据增量导入hive</li>
-<li><ol>
-<li>基于递增列Append导入</li>
-</ol>
-</li>
+<li>一. <code>Sqoop</code>介绍</li>
+<li>二. <code>Mysql</code> 数据导入到 <code>Hive</code></li>
+<li>三. <code>Hive</code>数据导入到<code>Mysql</code></li>
+<li>四. <code>mysql</code>数据增量导入<code>hive</code></li>
 <li><ul>
-<li>1). 创建hive表</li>
+<li>1 基于递增列<code>Append</code>导入</li>
 </ul>
 </li>
 <li><ul>
-<li>2). 创建job</li>
+<li><ul>
+<li>1). 创建<code>hive</code>表</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><ul>
-<li>3) 执行job</li>
+<li><ul>
+<li>2). 创建<code>job</code></li>
 </ul>
 </li>
-<li><ol start="2">
-<li>Lastmodified 导入实战</li>
-</ol>
+</ul>
 </li>
+<li><ul>
+<li><ul>
+<li>3) 执行<code>job</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>2 <code>Lastmodified</code> 导入实战</li>
+</ul>
+</li>
+<li><ul>
 <li><ul>
 <li>1). 新建一张表</li>
 </ul>
 </li>
+</ul>
+</li>
 <li><ul>
-<li>2). 初始化hive表:</li>
+<li><ul>
+<li>2). 初始化<code>hive</code>表:</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -404,7 +425,7 @@ var _hmt = _hmt || [];
 </table>
 <p>增量导入有几个参数，保证下次同步的时候可以接着上次继续同步.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sqoop job --create mysql2hive_job -- import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log \</span><br><span class="line">--target-dir /user/hive/warehouse/web.db/people_access_log \</span><br><span class="line">--check-column id \</span><br><span class="line">--incremental append \</span><br><span class="line">--fields-terminated-by <span class="string">'\t'</span> \</span><br><span class="line">--last-value 6 \</span><br><span class="line">-m 1</span><br></pre></td></tr></table></figure></p>
 <p>这里通过<code>sqoop job --create job_name</code>命令创建了一个名为<code>mysql2hive_job</code>的<code>sqoop job</code>。</p>
-<h4 id="执行job"><a href="#执行job" class="headerlink" title="执行job"></a>执行job</h4><p>创建好了<code>job</code>，后面只需要定时周期执行这个提前定义好的<code>job</code>即可。我们先往<code>mysql</code>里面插入2条数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`people_access_log`</span> (<span class="string">`id`</span>,<span class="string">`user_id`</span>,<span class="string">`access_time`</span>,<span class="string">`ip`</span>,<span class="string">`url`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="number">1577003281790</span>,<span class="string">'112.168.1.3'</span>,<span class="string">'https://www.qq.com'</span>),</span><br><span class="line">(<span class="number">8</span>,<span class="number">15110101017</span>,<span class="number">1577003281791</span>,<span class="string">'112.1.1.3'</span>,<span class="string">'https://www.microsoft.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-执行job"><a href="#3-执行job" class="headerlink" title="3). 执行job"></a>3). 执行job</h4><p>创建好了<code>job</code>，后面只需要定时周期执行这个提前定义好的<code>job</code>即可。我们先往<code>mysql</code>里面插入2条数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`people_access_log`</span> (<span class="string">`id`</span>,<span class="string">`user_id`</span>,<span class="string">`access_time`</span>,<span class="string">`ip`</span>,<span class="string">`url`</span>) <span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="number">1577003281790</span>,<span class="string">'112.168.1.3'</span>,<span class="string">'https://www.qq.com'</span>),</span><br><span class="line">(<span class="number">8</span>,<span class="number">15110101017</span>,<span class="number">1577003281791</span>,<span class="string">'112.1.1.3'</span>,<span class="string">'https://www.microsoft.com'</span>);</span><br></pre></td></tr></table></figure></p>
 <p>这样<code>mysql</code>里面就会多了2条数据。此时<code>hive</code>里面只有<code>id</code>为<code>1 ~ 6</code>的数据，执行同步<code>job</code>使用以下命令。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqoop job -<span class="built_in">exec</span> mysql2hive_job</span><br></pre></td></tr></table></figure></p>
 <p>执行完成后，发现刚才<code>mysql</code>新加入的<code>id</code>为<code>7 ~ 8</code>的两条数据已经同步到<code>hive</code>。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	1577003281739	112.168.1.2	https://www.baidu.com</span><br><span class="line">2	15110101011	1577003281749	112.16.1.23	https://www.baidu.com</span><br><span class="line">3	15110101012	1577003281759	193.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	1577003281769	112.18.1.2	https://www.baidu.com</span><br><span class="line">5	15110101014	1577003281779	112.168.10.2	https://www.baidu.com</span><br><span class="line">6	15110101015	1577003281789	11.168.1.2	https://www.taobao.com</span><br><span class="line">7	15110101016	1577003281790	112.168.1.3	https://www.qq.com</span><br><span class="line">8	15110101017	1577003281791	112.1.1.3	https://www.microsoft.com</span><br></pre></td></tr></table></figure></p>
 <p>由于实际场景中，<code>mysql</code>表中的数据，比如订单表等，通常是一致有数据进入的，这时候只需要将<code>sqoop job -exec mysql2hive_job</code>这个命令定时(比如说10分钟频率)执行一次，就能将数据10分钟同步一次到<code>hive</code>数据仓库。</p>
@@ -469,7 +490,7 @@ var _hmt = _hmt || [];
 </table>
 <h4 id="2-初始化hive表"><a href="#2-初始化hive表" class="headerlink" title="2). 初始化hive表:"></a>2). 初始化<code>hive</code>表:</h4><p>初始化<code>hive</code>数据，将<code>mysql</code>里面的<code>6</code>条数据导入<code>hive</code>中，并且可以自动帮助我们创建对应<code>hive</code>表，何乐而不为，否则我们需要自己手动创建，完成初始化工作。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--create-hive-table \</span><br><span class="line">--fields-terminated-by <span class="string">','</span> \</span><br><span class="line">--hive-table web.people_access_log2</span><br></pre></td></tr></table></figure></p>
 <p>可以看到执行该命令后，启动了二一个<code>mapreduce</code>任务，这样6条数据就进入<code>hive</code>表<code>web.people_access_log2</code>了:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select * from web.people_access_log2;</span><br><span class="line">OK</span><br><span class="line">1	15110101010	2019-12-28 16:23:10.0	112.168.1.200	https://www.baidu.com</span><br><span class="line">2	15110101011	2019-12-28 16:23:33.0	112.16.1.2	https://www.baidu.com</span><br><span class="line">3	15110101012	2019-12-28 16:23:41.0	112.168.1.2	https://www.taobao.com</span><br><span class="line">4	15110101013	2019-12-28 16:23:46.0	112.168.10.2	https://www.baidu.com</span><br><span class="line">5	15110101014	2019-12-28 16:23:52.0	112.168.1.2	https://www.jd.com</span><br><span class="line">6	15110101015	2019-12-28 16:23:56.0	112.168.12.4	https://www.qq.com</span><br><span class="line">Time taken: 0.326 seconds, Fetched: 6 row(s)</span><br></pre></td></tr></table></figure></p>
-<p>我们再次插入一条数据进入<code>mysql</code>的<code>people_access_log2</code>表:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="string">'112.168.12.45'</span>,<span class="string">'https://www.qq.com'</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-增量导入数据"><a href="#3-增量导入数据" class="headerlink" title="3). 增量导入数据:"></a>3). 增量导入数据:</h4><p>我们再次插入一条数据进入<code>mysql</code>的<code>people_access_log2</code>表:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> people_access_log2(<span class="keyword">id</span>,user_id, ip, <span class="keyword">url</span>) <span class="keyword">values</span>(<span class="number">7</span>,<span class="number">15110101016</span>,<span class="string">'112.168.12.45'</span>,<span class="string">'https://www.qq.com'</span>);</span><br></pre></td></tr></table></figure></p>
 <p>此时，<code>mysql</code>表里面已经有<code>7</code>条数据了，我们使用<code>incremental</code>的方式进行增量的导入到<code>hive</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--hive-table people_access_log2 \</span><br><span class="line">-m 1 \</span><br><span class="line">--check-column access_time \</span><br><span class="line">--incremental lastmodified \</span><br><span class="line">--last-value <span class="string">"2019-12-28 16:23:56"</span> \</span><br></pre></td></tr></table></figure></p>
 <p><code>2019-12-28 16:23:56</code>就是第6条数据的时间，这里需要指定。报错了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19/12/28 16:17:25 ERROR tool.ImportTool: Error during import: --merge-key or --append is required when using --incremental lastmodified and the output directory exists.</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意</strong>：可以看到<code>--merge-key or --append is required when using --incremental lastmodified</code>意思是，这种基于时间导入模式，需要指定<code>--merge-key</code>或者<code>--append</code>参数，表示根据时间戳导入，数据是直接在末尾追加(append)还是合并(merge)，这里使用<code>merge</code>方式，根据<code>id</code>合并：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sqoop import \</span><br><span class="line">--connect jdbc:mysql://master1.hadoop:3306/<span class="built_in">test</span> \</span><br><span class="line">--username root \</span><br><span class="line">--password 123456 \</span><br><span class="line">--table people_access_log2 \</span><br><span class="line">--hive-import \</span><br><span class="line">--hive-table web.people_access_log2 \</span><br><span class="line">--check-column access_time \</span><br><span class="line">--incremental lastmodified \</span><br><span class="line">--last-value <span class="string">"2019-12-28 16:23:56"</span> \</span><br><span class="line">--fields-terminated-by <span class="string">','</span> \</span><br><span class="line">--merge-key id</span><br></pre></td></tr></table></figure></p>
@@ -640,7 +661,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本文目录"><span class="toc-number">1.</span> <span class="toc-text">本文目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Sqoop介绍"><span class="toc-number">2.</span> <span class="toc-text">一. Sqoop介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Mysql-数据导入到-Hive"><span class="toc-number">3.</span> <span class="toc-text">二. Mysql 数据导入到 Hive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Hive数据导入到Mysql"><span class="toc-number">4.</span> <span class="toc-text">三. Hive数据导入到Mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-mysql数据增量导入hive"><span class="toc-number">5.</span> <span class="toc-text">四. mysql数据增量导入hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基于递增列Append导入"><span class="toc-number">5.1.</span> <span class="toc-text">1. 基于递增列Append导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建hive表"><span class="toc-number">5.1.1.</span> <span class="toc-text">1). 创建hive表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建job"><span class="toc-number">5.1.2.</span> <span class="toc-text">2). 创建job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行job"><span class="toc-number">5.1.3.</span> <span class="toc-text">执行job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Lastmodified-导入实战"><span class="toc-number">5.2.</span> <span class="toc-text">2. Lastmodified 导入实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新建一张表"><span class="toc-number">5.2.1.</span> <span class="toc-text">1). 新建一张表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-初始化hive表"><span class="toc-number">5.2.2.</span> <span class="toc-text">2). 初始化hive表:</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本文目录"><span class="toc-number">1.</span> <span class="toc-text">本文目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Sqoop介绍"><span class="toc-number">2.</span> <span class="toc-text">一. Sqoop介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Mysql-数据导入到-Hive"><span class="toc-number">3.</span> <span class="toc-text">二. Mysql 数据导入到 Hive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Hive数据导入到Mysql"><span class="toc-number">4.</span> <span class="toc-text">三. Hive数据导入到Mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-mysql数据增量导入hive"><span class="toc-number">5.</span> <span class="toc-text">四. mysql数据增量导入hive</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基于递增列Append导入"><span class="toc-number">5.1.</span> <span class="toc-text">1. 基于递增列Append导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建hive表"><span class="toc-number">5.1.1.</span> <span class="toc-text">1). 创建hive表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建job"><span class="toc-number">5.1.2.</span> <span class="toc-text">2). 创建job</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-执行job"><span class="toc-number">5.1.3.</span> <span class="toc-text">3). 执行job</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Lastmodified-导入实战"><span class="toc-number">5.2.</span> <span class="toc-text">2. Lastmodified 导入实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新建一张表"><span class="toc-number">5.2.1.</span> <span class="toc-text">1). 新建一张表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-初始化hive表"><span class="toc-number">5.2.2.</span> <span class="toc-text">2). 初始化hive表:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-增量导入数据"><span class="toc-number">5.2.3.</span> <span class="toc-text">3). 增量导入数据:</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>

@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
-    <lastmod>2019-12-28</lastmod>
+    <lastmod>2019-12-29</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
+    <lastmod>2019-12-29</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/08/03/statistic-hive-daily-week-month/</loc>
+    <lastmod>2019-12-29</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/08/29/spark-kafka-partition/</loc>
+    <lastmod>2019-12-29</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
+    <lastmod>2019-12-29</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
     <lastmod>2019-12-20</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
-    <lastmod>2019-12-17</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/03/17/python-sytnax/</loc>
     <lastmod>2019-12-17</lastmod>
@@ -82,9 +91,6 @@
     <loc>http://www.ikeguang.com/2019/12/03/chapter01-hive-helloworld/</loc>
     <lastmod>2019-12-04</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
-    <lastmod>2019-11-05</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/10/11/mysql-id-2-max/</loc>
     <lastmod>2019-10-11</lastmod>
   </url>  <url>
@@ -154,9 +160,6 @@
     <loc>http://www.ikeguang.com/2019/04/28/kafka-producer-consumer/</loc>
     <lastmod>2019-04-28</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/08/29/spark-kafka-partition/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2018/09/04/hive-orc/</loc>
     <lastmod>2019-04-25</lastmod>
   </url>  <url>
@@ -170,9 +173,6 @@
     <lastmod>2019-04-25</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2018/09/26/hive-hbase-user-table/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2018/08/03/statistic-hive-daily-week-month/</loc>
     <lastmod>2019-04-25</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2017/05/07/line-gredient/</loc>

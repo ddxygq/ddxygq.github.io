@@ -4,7 +4,42 @@
   <url>
     <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
     
-    <lastmod>2019-12-28T08:45:50.433Z</lastmod>
+    <lastmod>2019-12-29T07:13:24.925Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/share/index.html</loc>
+    
+    <lastmod>2019-12-29T06:50:01.070Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
+    
+    <lastmod>2019-12-29T06:44:54.571Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2018/08/03/statistic-hive-daily-week-month/</loc>
+    
+    <lastmod>2019-12-29T06:44:33.501Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2018/08/29/spark-kafka-partition/</loc>
+    
+    <lastmod>2019-12-29T06:44:22.951Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
+    
+    <lastmod>2019-12-29T06:44:10.123Z</lastmod>
     
   </url>
   
@@ -12,20 +47,6 @@
     <loc>http://www.ikeguang.com/2019/12/16/pop3-imap-smtp/</loc>
     
     <lastmod>2019-12-20T14:05:37.071Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/share/index.html</loc>
-    
-    <lastmod>2019-12-20T13:53:48.373Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/2019/03/14/redis-del-security/</loc>
-    
-    <lastmod>2019-12-17T15:35:27.518Z</lastmod>
     
   </url>
   
@@ -208,13 +229,6 @@
     <loc>http://www.ikeguang.com/404.html</loc>
     
     <lastmod>2019-11-16T13:55:35.122Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/2018/07/28/sparkStreaming-redis-mysql/</loc>
-    
-    <lastmod>2019-11-05T14:20:11.632Z</lastmod>
     
   </url>
   
@@ -408,13 +422,6 @@
   </url>
   
   <url>
-    <loc>http://www.ikeguang.com/2018/08/29/spark-kafka-partition/</loc>
-    
-    <lastmod>2019-04-25T12:11:20.771Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.ikeguang.com/2018/09/04/hive-orc/</loc>
     
     <lastmod>2019-04-25T12:09:42.038Z</lastmod>
@@ -446,13 +453,6 @@
     <loc>http://www.ikeguang.com/2018/09/26/hive-hbase-user-table/</loc>
     
     <lastmod>2019-04-25T12:05:08.518Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/2018/08/03/statistic-hive-daily-week-month/</loc>
-    
-    <lastmod>2019-04-25T11:58:47.154Z</lastmod>
     
   </url>
   
