@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
+    <lastmod>2019-12-30</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
     <lastmod>2019-12-29</lastmod>
   </url>  <url>
@@ -144,9 +147,6 @@
   </url>  <url>
     <loc>http://www.ikeguang.com/2018/12/12/redis-usage/</loc>
     <lastmod>2019-05-07</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
-    <lastmod>2019-05-06</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2017/04/07/machine-sjwl-2/</loc>
     <lastmod>2019-05-06</lastmod>

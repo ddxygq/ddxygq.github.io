@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
+    <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
     
-    <lastmod>2019-12-29T07:13:24.925Z</lastmod>
+    <lastmod>2019-12-30T15:12:31.894Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.ikeguang.com/share/index.html</loc>
     
-    <lastmod>2019-12-29T06:50:01.070Z</lastmod>
+    <lastmod>2019-12-30T15:10:24.405Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2019/12/20/sqoop-usage/</loc>
+    
+    <lastmod>2019-12-29T07:13:24.925Z</lastmod>
     
   </url>
   
@@ -376,13 +383,6 @@
     <loc>http://www.ikeguang.com/2018/12/12/redis-usage/</loc>
     
     <lastmod>2019-05-07T15:15:39.220Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
-    
-    <lastmod>2019-05-06T14:59:01.750Z</lastmod>
     
   </url>
   
