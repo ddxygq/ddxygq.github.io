@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ikeguang.com/2018/10/14/hive-user-table-recover/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/04/08/hive-udf/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/09/04/hive-orc/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/06/25/hive-msck-repair-table/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/08/14/hive-mapjoin-error/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/11/04/hive-knowledge/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/09/26/hive-hbase-user-table/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/08/15/hive-hbase-handler-1-2-1/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/09/12/hadoop-security/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2019/05/07/flink-stream-table/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
+    <loc>http://www.ikeguang.com/2018/08/28/delete-redis-key/</loc>
+    <lastmod>2020-01-02</lastmod>
+  </url>  <url>
     <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
     <lastmod>2019-12-30</lastmod>
   </url>  <url>
@@ -100,9 +133,6 @@
     <loc>http://www.ikeguang.com/2019/09/12/spring-boot-paging/</loc>
     <lastmod>2019-09-11</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/11/04/hive-knowledge/</loc>
-    <lastmod>2019-09-11</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/01/12/gitment-issue/</loc>
     <lastmod>2019-08-19</lastmod>
   </url>  <url>
@@ -117,9 +147,6 @@
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/06/13/google-search-order/</loc>
     <lastmod>2019-07-03</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2019/06/25/hive-msck-repair-table/</loc>
-    <lastmod>2019-06-25</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2019/06/18/machine-line/</loc>
     <lastmod>2019-06-22</lastmod>
@@ -142,9 +169,6 @@
     <loc>http://www.ikeguang.com/2018/12/31/life-noequal/</loc>
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2019/05/07/flink-stream-table/</loc>
-    <lastmod>2019-05-07</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2018/12/12/redis-usage/</loc>
     <lastmod>2019-05-07</lastmod>
   </url>  <url>
@@ -160,19 +184,7 @@
     <loc>http://www.ikeguang.com/2019/04/28/kafka-producer-consumer/</loc>
     <lastmod>2019-04-28</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/09/04/hive-orc/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2018/08/14/hive-mapjoin-error/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/03/24/hexo-udefined-page/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2018/08/28/delete-redis-key/</loc>
-    <lastmod>2019-04-25</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2018/09/26/hive-hbase-user-table/</loc>
     <lastmod>2019-04-25</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2017/05/07/line-gredient/</loc>
@@ -184,9 +196,6 @@
     <loc>http://www.ikeguang.com/2019/01/01/2019-flag/</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2019/04/08/hive-udf/</loc>
-    <lastmod>2019-04-14</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/03/23/mr-output-difffile/</loc>
     <lastmod>2019-03-23</lastmod>
   </url>  <url>
@@ -196,23 +205,14 @@
     <loc>http://www.ikeguang.com/2019/02/04/happy-newyear/</loc>
     <lastmod>2019-02-14</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/10/14/hive-user-table-recover/</loc>
-    <lastmod>2019-01-12</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2019/01/05/mysql-unique/</loc>
     <lastmod>2019-01-07</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2018/09/17/a-girl/</loc>
     <lastmod>2018-12-21</lastmod>
   </url>  <url>
-    <loc>http://www.ikeguang.com/2018/09/12/hadoop-security/</loc>
-    <lastmod>2018-09-14</lastmod>
-  </url>  <url>
     <loc>http://www.ikeguang.com/2018/08/31/redisauth/</loc>
     <lastmod>2018-09-07</lastmod>
-  </url>  <url>
-    <loc>http://www.ikeguang.com/2018/08/15/hive-hbase-handler-1-2-1/</loc>
-    <lastmod>2018-09-03</lastmod>
   </url>  <url>
     <loc>http://www.ikeguang.com/2018/07/02/aliyun-mirror/</loc>
     <lastmod>2018-08-31</lastmod>
