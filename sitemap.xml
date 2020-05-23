@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ikeguang.com/2020/05/23/hbase-count-row/</loc>
+    
+    <lastmod>2020-05-23T08:47:33.590Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/2020/05/22/hive-hbase-usage/</loc>
+    
+    <lastmod>2020-05-23T08:28:47.696Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ikeguang.com/2020/04/29/hive-string-usage/</loc>
     
-    <lastmod>2020-04-29T14:33:49.291Z</lastmod>
+    <lastmod>2020-05-22T15:33:19.549Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.ikeguang.com/share/index.html</loc>
+    
+    <lastmod>2020-04-29T14:45:37.909Z</lastmod>
     
   </url>
   
@@ -117,13 +138,6 @@
     <loc>http://www.ikeguang.com/2019/03/21/flink-pv-uv/</loc>
     
     <lastmod>2019-12-30T15:12:31.894Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ikeguang.com/share/index.html</loc>
-    
-    <lastmod>2019-12-30T15:10:24.405Z</lastmod>
     
   </url>
   

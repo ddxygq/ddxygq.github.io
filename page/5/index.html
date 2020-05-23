@@ -217,6 +217,211 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hive-udf" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/08/hive-udf/">hive udf 使用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/08/hive-udf/" class="archive-article-date">
+  	<time datetime="2019-04-08T13:03:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hive作为一个sql查询引擎，自带了一些基本的函数，比如<code>count</code>(计数)，<code>sum</code>(求和)，有时候这些基本函数满足不了我们的需求，这时候就要写<code>hive hdf(user defined funation)</code>，又叫用户自定义函数，应用与<code>select</code> 语句中。</p>
+<p>哪些情况满足不了我们的需求呢，比如：</p>
+<ul>
+<li>需要将字段与数据库中查询一下，做个比对；</li>
+<li>需要对数据进行复杂处理；</li>
+<li>等等</li>
+</ul>
+<h1 id="hive-udf-用法"><a href="#hive-udf-用法" class="headerlink" title="hive udf 用法"></a>hive udf 用法</h1>
+          
+        
+          <a class="article-more-a" href="/2019/04/08/hive-udf/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hive</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bigdata</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/大数据//" class="article-tag-list-link color4">大数据</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/08/hive-udf/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!--
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container',
+        blogId: '15845-1569417464692-996',
+        name: '数据分析挖掘与算法',
+        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
+        keyword: '验证码',
+    });
+</script>
+-->
+  
+    <article id="post-hexo-udefined-page" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/24/hexo-udefined-page/">Hexo自定义页面的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/24/hexo-udefined-page/" class="archive-article-date">
+  	<time datetime="2019-03-24T04:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Hexo是静态页博客生成利器，同很多博主一样，前端路上原创技术博客也是使用Hexo生成并托管在Github Page上的，但在使用Hexo的过程中遇到一个小问题，Hexo默认会对/source/里的所有页面应用主题模板渲染，但有一些前端作品或demo页我们不希望经过渲染，而是能保持完全自定义的样子，那该怎么用Hexo添加自定义的web页面呢？</p>
+<h1 id="两种方法"><a href="#两种方法" class="headerlink" title="两种方法"></a>两种方法</h1><p>第一种方法是使用Hexo提供的跳过渲染配置，适用于整个目录的设置。具体步骤，打开博客根目录_config.yml，找到其中skip_render项，这个项目用来配置/source/中需要跳过渲染的文件或目录，例如希望跳过/source/projects/里的所有文件渲染，可以配置为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip_render: projects/**</span><br></pre></td></tr></table></figure></p>
+          
+        
+          <a class="article-more-a" href="/2019/03/24/hexo-udefined-page/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/24/hexo-udefined-page/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+<!--
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container',
+        blogId: '15845-1569417464692-996',
+        name: '数据分析挖掘与算法',
+        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
+        keyword: '验证码',
+    });
+</script>
+-->
+  
     <article id="post-mr-output-difffile" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1049,209 +1254,6 @@ var _hmt = _hmt || [];
 </script>
 -->
   
-    <article id="post-python-QR-code" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/26/python-QR-code/">使用Python快速生成二维码</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/26/python-QR-code/" class="archive-article-date">
-  	<time datetime="2019-01-26T06:55:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-26</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我相信很多人，跟我一样，经常需要生成各种二维码，好在微信中发送，传播，我通常都会用一个几行python代码的脚本快速生成二维码。</p>
-<p>想用的时候，随时输入一个命令，就能生成二维码。</p>
-          
-        
-          <a class="article-more-a" href="/2019/01/26/python-QR-code/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python博文//" class="article-tag-list-link color4">Python博文</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/26/python-QR-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
-    <article id="post-gitment-issue" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/12/gitment-issue/">hexo基于yilia主题使用gitment为博客搭建免费中文汉化评论系统</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/12/gitment-issue/" class="archive-article-date">
-  	<time datetime="2019-01-12T12:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-12</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前面介绍了怎么免费搭建个人博客，可以参考这篇文章。<br><a href="https://mp.weixin.qq.com/s/ZWMFu__gdm6kTRcsttx9Mw" target="_blank" rel="noopener">hexo | 不用写代码，2小时快速搭建个人博客</a></p>
-<p>我的博客用的是搜狐的畅言，功能确实非常强大，但是很多功能我用不上，也不会用，有两个问题：1）评论需要登录，有门槛；2）页面底部有广告。严重影响视觉体验。<br><img src="/2019/01/12/gitment-issue/0.png" alt=""></p>
-          
-        
-          <a class="article-more-a" href="/2019/01/12/gitment-issue/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">gitment</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/12/gitment-issue/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-<!--
-<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-<script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: '15845-1569417464692-996',
-        name: '数据分析挖掘与算法',
-        qrcode: 'http://qiniu.ikeguang.com/image/ikeguang.com/ikeguang2.jpg',
-        keyword: '验证码',
-    });
-</script>
--->
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1405,6 +1407,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">flink</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -1417,7 +1423,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flink</a>
+                <a href="javascript:void(0)" class="js-tag color4">seo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流量</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,14 +1436,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">大数据安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">seo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流量</a>
               </li>
              
               <li class="article-tag-list-item">
