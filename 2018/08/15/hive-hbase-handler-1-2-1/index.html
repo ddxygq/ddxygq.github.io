@@ -441,25 +441,34 @@ var _hmt = _hmt || [];
      (adsbygoogle = window.adsbygoogle || []).push({});
    </script>
 
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="/css/gitment.css">
-<script src="/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "Wed Aug 15 2018 19:48:17 GMT+0800",
-  owner: 'ddxygq',
-  repo: 'ddxygq.github.io',
-  oauth: {
-    client_id: 'c40772ee5582963d90df',
-    client_secret: 'e4927d60b7d03439a5dab4858239c26643fe03e9',
-  },
+   
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: 'c40772ee5582963d90df',
+  	clientSecret: 'e4927d60b7d03439a5dab4858239c26643fe03e9',
+  	repo: 'ddxygq.github.io',
+  	owner: 'ddxygq',
+  	admin: ['ddxygq'],
+  	id: 'Wed Aug 15 2018 19:48:17 GMT+0800',
+  	distractionFreeMode: 'true'
 })
-gitment.render('gitment-ctn')
+gitalk.render('gitalk-container') 
+}
 </script>
   
 
+  <!--
 
+  
+
+
+-->
 
 <!--
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
@@ -620,10 +629,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">flink</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -636,11 +641,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">seo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流量</a>
+                <a href="javascript:void(0)" class="js-tag color1">flink</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,6 +650,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">大数据安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">seo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流量</a>
               </li>
              
               <li class="article-tag-list-item">
